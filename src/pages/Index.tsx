@@ -1,13 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import LoadingScreen from '@/components/LoadingScreen';
+import MatrixRain from '@/components/MatrixRain';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import AboutSection from '@/components/AboutSection';
+import ResumeSection from '@/components/ResumeSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Preload hero background image
+    const img = new Image();
+    img.src = '/src/assets/hero-bg.jpg';
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
+      {/* Main Content */}
+      {!isLoading && (
+        <div className="relative min-h-screen">
+          {/* Background Effects */}
+          <MatrixRain />
+          <div className="grid-overlay" />
+
+          {/* Navigation */}
+          <Navbar />
+
+          {/* Main Sections */}
+          <main>
+            <HeroSection />
+            <ProjectsSection />
+            <AboutSection />
+            <ResumeSection />
+            <ContactSection />
+          </main>
+
+          {/* Footer */}
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
