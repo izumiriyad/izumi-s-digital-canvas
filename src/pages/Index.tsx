@@ -4,6 +4,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 import MatrixRain from '@/components/MatrixRain';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
+import FloatingHireButton from '@/components/FloatingHireButton';
 import ProjectsSection from '@/components/ProjectsSection';
 import BlogSection from '@/components/BlogSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -39,6 +40,7 @@ const Index = () => {
 
           {/* Navigation */}
           <Navbar />
+          <FloatingHireButton />
 
           {/* Main Sections */}
           <main>
