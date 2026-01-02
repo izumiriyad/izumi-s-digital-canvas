@@ -3,6 +3,7 @@ import { Code, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Terminal from './Terminal';
 import AnimatedCounter from './AnimatedCounter';
+import TypingEffect from './TypingEffect';
 import heroBg from '@/assets/hero-bg.jpg';
 import profilePhoto from '@/assets/izumi-profile.jpg';
 
@@ -52,16 +53,20 @@ const HeroSection = () => {
               Security Researcher | Offensive Engineer | Automation Architect
             </motion.div>
 
-            {/* Name */}
+            {/* Name with Typing Effect */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
-              <span className="text-gradient">Aftab Ahomod</span>
+              <span className="text-gradient">
+                <TypingEffect text="Aftab Ahomod" delay={500} speed={80} />
+              </span>
               <br />
-              <span className="text-foreground">Riyad</span>
+              <span className="text-foreground">
+                <TypingEffect text="Riyad" delay={1700} speed={100} />
+              </span>
             </motion.h1>
 
             {/* Tagline */}
