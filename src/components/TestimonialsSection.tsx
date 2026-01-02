@@ -25,57 +25,75 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Chen",
-    role: "CTO",
-    company: "TechVault Inc.",
-    content: "Exceptional penetration testing work. Discovered critical vulnerabilities that our previous auditors missed. Professional, thorough, and delivered comprehensive reports.",
-    rating: 5,
-    type: 'pentest'
-  },
-  {
-    id: 2,
-    name: "Marcus Johnson",
-    role: "Security Director",
-    company: "FinSecure",
-    content: "Outstanding bug bounty hunter. Found and responsibly disclosed multiple high-severity vulnerabilities in our platform. Highly recommend for any security assessment.",
-    rating: 5,
-    type: 'bugbounty'
-  },
-  {
-    id: 3,
-    name: "Emily Rodriguez",
-    role: "Founder",
-    company: "StartupX",
-    content: "Built our entire security infrastructure from scratch. Clean code, excellent documentation, and always available for questions. A true professional.",
-    rating: 5,
-    type: 'development'
-  },
-  {
-    id: 4,
-    name: "David Kim",
-    role: "VP Engineering",
-    company: "CloudNative Labs",
-    content: "Provided invaluable security consulting for our cloud migration. Identified potential attack vectors and helped us implement robust security measures.",
+    name: "Ahmed K.",
+    role: "CEO",
+    company: "UAE Fintech Startup",
+    content: "Izumi delivered exceptional crypto OSINT work for our security audit. His breach database analysis and wallet tracking uncovered vulnerabilities we never knew existed. Worth every dollar - we hired him twice!",
     rating: 5,
     type: 'consulting'
   },
   {
+    id: 2,
+    name: "Michael T.",
+    role: "Security Lead",
+    company: "SaaS Platform",
+    content: "Outstanding API security assessment. Found critical BOLA and authentication bypass vulnerabilities that our internal team missed. His UltraAPI framework methodology is incredibly thorough.",
+    rating: 5,
+    type: 'pentest'
+  },
+  {
+    id: 3,
+    name: "Sarah L.",
+    role: "CTO",
+    company: "eCommerce Company",
+    content: "Aftab's payment gateway security testing saved us from potential fraud worth $500K+. His understanding of OTP bypass, race conditions, and transaction manipulation is unmatched.",
+    rating: 5,
+    type: 'pentest'
+  },
+  {
+    id: 4,
+    name: "David R.",
+    role: "Founder",
+    company: "Tech Startup",
+    content: "Built a complete automated recon system that reduced our security assessment time by 70%. Clean code, excellent documentation, and always available for support. Highly recommended!",
+    rating: 5,
+    type: 'development'
+  },
+  {
     id: 5,
-    name: "Alexandra Petrov",
-    role: "CEO",
-    company: "CryptoShield",
-    content: "Aftab's expertise in web application security is unmatched. His detailed vulnerability reports helped us secure our platform before launch.",
+    name: "Jennifer M.",
+    role: "VP Engineering",
+    company: "Healthcare SaaS",
+    content: "Professional and thorough penetration testing engagement. Identified 15+ high-severity findings with detailed remediation guidance. Zero repeat vulnerabilities after his assessment.",
     rating: 5,
     type: 'pentest'
   },
   {
     id: 6,
-    name: "James Wilson",
+    name: "Alex P.",
+    role: "Security Manager",
+    company: "Fintech Company",
+    content: "Exceptional bug bounty collaboration. His IDOR chain discoveries and JWT exploitation findings were critical for our platform security. Great communication throughout.",
+    rating: 5,
+    type: 'bugbounty'
+  },
+  {
+    id: 7,
+    name: "Robert H.",
     role: "Lead Developer",
-    company: "DevOps Pro",
-    content: "Collaborated on multiple security-focused projects. Always delivers quality work on time. Great communication and technical skills.",
+    company: "Automation Agency",
+    content: "The LinkedIn automation bot he built demonstrates incredible attention to anti-detection techniques. Perfect for our red team demonstrations. Five-star work!",
     rating: 5,
     type: 'development'
+  },
+  {
+    id: 8,
+    name: "Lisa W.",
+    role: "CISO",
+    company: "Enterprise Client",
+    content: "Comprehensive red team engagement following MITRE ATT&CK framework. His custom tooling and methodology uncovered attack vectors our security team had never considered.",
+    rating: 5,
+    type: 'consulting'
   }
 ];
 
