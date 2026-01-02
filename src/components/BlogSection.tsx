@@ -15,56 +15,54 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    title: "CVE-2024-XXXX: Authentication Bypass in Popular CMS",
-    excerpt: "Discovered a critical authentication bypass vulnerability affecting thousands of websites. The flaw allowed attackers to gain admin access without valid credentials.",
-    date: "2024-01-15",
-    tags: ["Authentication", "Web Security", "CMS"],
+    title: "Information Disclosure in Remitly Payment Platform",
+    excerpt: "Discovered a critical information disclosure vulnerability in Remitly (Bug #3116964) that could lead to potential account takeover through exposed sensitive user data.",
+    date: "2024-08-15",
+    tags: ["Information Disclosure", "Payment Security", "HackerOne"],
     type: "cve",
-    cveId: "CVE-2024-XXXX",
-    severity: "critical",
-    link: "#"
-  },
-  {
-    title: "Hunting IDOR Vulnerabilities at Scale",
-    excerpt: "A deep dive into my methodology for finding Insecure Direct Object Reference vulnerabilities using custom automation tools and pattern recognition.",
-    date: "2024-02-20",
-    tags: ["IDOR", "Bug Bounty", "Automation"],
-    type: "writeup",
-    link: "#"
-  },
-  {
-    title: "Building a Custom Subdomain Enumeration Pipeline",
-    excerpt: "How I built a comprehensive subdomain enumeration system combining multiple tools, APIs, and custom scripts for maximum coverage.",
-    date: "2024-03-10",
-    tags: ["Reconnaissance", "Automation", "Python"],
-    type: "tutorial",
-    link: "#"
-  },
-  {
-    title: "SQL Injection to RCE: A Bug Bounty Journey",
-    excerpt: "Documenting my process of escalating a simple SQL injection to full remote code execution on a major platform, earning a $10,000 bounty.",
-    date: "2024-04-05",
-    tags: ["SQLi", "RCE", "Bug Bounty"],
-    type: "writeup",
-    link: "#"
-  },
-  {
-    title: "Bypassing WAF Protections: Techniques & Case Studies",
-    excerpt: "An analysis of common WAF bypass techniques with real-world examples from my penetration testing engagements.",
-    date: "2024-05-18",
-    tags: ["WAF", "Bypass", "Penetration Testing"],
-    type: "research",
-    link: "#"
-  },
-  {
-    title: "CVE-2023-YYYY: SSRF in Cloud Provider API",
-    excerpt: "Found a Server-Side Request Forgery vulnerability in a major cloud provider that could leak internal metadata and credentials.",
-    date: "2023-11-22",
-    tags: ["SSRF", "Cloud Security", "API"],
-    type: "cve",
-    cveId: "CVE-2023-YYYY",
+    cveId: "Bug #3116964",
     severity: "high",
-    link: "#"
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
+  },
+  {
+    title: "SSRF to RCE: Chaining Vulnerabilities for Maximum Impact",
+    excerpt: "Deep dive into my methodology for discovering and chaining SSRF vulnerabilities to achieve Remote Code Execution, with real-world case studies from penetration testing engagements.",
+    date: "2024-06-20",
+    tags: ["SSRF", "RCE", "Exploitation"],
+    type: "writeup",
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
+  },
+  {
+    title: "Payment Gateway OTP Bypass Techniques",
+    excerpt: "Analysis of OTP/PIN verification flaws in fintech platforms including race conditions, TOCTOU attacks, and transaction manipulation vulnerabilities that saved clients $500K+ in potential fraud.",
+    date: "2024-05-10",
+    tags: ["Fintech", "OTP Bypass", "Business Logic"],
+    type: "research",
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
+  },
+  {
+    title: "Hunting IDOR Chains in Financial APIs",
+    excerpt: "My approach to discovering and exploiting chained IDOR vulnerabilities in financial applications, including BOLA/IDOR detection patterns and permission matrix testing techniques.",
+    date: "2024-04-05",
+    tags: ["IDOR", "API Security", "BOLA"],
+    type: "writeup",
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
+  },
+  {
+    title: "Building UltraAPI: 70% Faster API Security Testing",
+    excerpt: "How I built a comprehensive API security framework that automates endpoint enumeration, JWT/OAuth exploitation, and rate-limit bypass testing, now adopted by 5+ security teams.",
+    date: "2024-03-18",
+    tags: ["Automation", "API Testing", "Tools"],
+    type: "tutorial",
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
+  },
+  {
+    title: "Rate-Limit Bypass: From Enumeration to Account Takeover",
+    excerpt: "Comprehensive guide on identifying and exploiting rate-limit vulnerabilities for user enumeration, credential stuffing, and authentication bypass in modern web applications.",
+    date: "2024-02-22",
+    tags: ["Rate-Limit", "Auth Bypass", "Bug Bounty"],
+    type: "research",
+    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
   }
 ];
 
