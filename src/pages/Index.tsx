@@ -5,6 +5,7 @@ import MatrixRain from '@/components/MatrixRain';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import BlogSection from '@/components/BlogSection';
 import AboutSection from '@/components/AboutSection';
 import ResumeSection from '@/components/ResumeSection';
 import ContactSection from '@/components/ContactSection';
@@ -40,6 +41,7 @@ const Index = () => {
           <main>
             <HeroSection />
             <ProjectsSection />
+            <BlogSection />
             <AboutSection />
             <ResumeSection />
             <ContactSection />
