@@ -3,71 +3,72 @@ import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart } from 'lu
 
 const projects = [
   {
-    title: 'Phantom Backend Cloud v4.0',
-    type: 'Enterprise Cloud Platform',
+    title: 'UltraAPI Framework',
+    type: 'API Security Testing Framework',
     description:
-      'Enterprise-grade cloud recon and API testing platform with ML-based threat scoring, subdomain enumeration, API leak detection, passive recon engine, and CVE fetching capabilities.',
-    tech: ['Bash', 'Python', 'Docker', 'Kubernetes', 'ML'],
+      'Advanced API security testing framework with automated endpoint enumeration, JWT/OAuth token misconfiguration detection, BOLA/IDOR scanner, rate-limit bypass automation, and mass assignment vulnerability detector. Adopted by 5+ security teams.',
+    tech: ['Node.js', 'Python', 'Bash', 'REST', 'GraphQL'],
     links: [
-      { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'View Details', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
     featured: true,
+    highlight: '70% Time Reduction',
   },
   {
-    title: 'Bug Bounty Hunter Pro',
-    type: 'Automation Suite',
+    title: 'Automated Recon System',
+    type: 'Attack Surface Mapping',
     description:
-      'End-to-end bounty hunting automation suite with multi-threaded payloads, auth bypass techniques, token brute-forcing, X-Forwarded logic, and intelligent CLI interface.',
-    tech: ['Python', 'Go', 'FFUF', 'Nuclei', 'CLI'],
+      'Comprehensive attack surface discovery integrating Amass, Subfinder, nuclei with automated subdomain takeover detection, technology fingerprinting, and continuous monitoring. Reduced recon time from 6+ hours to 15 minutes.',
+    tech: ['Python', 'Bash', 'OSINT', 'Nuclei', 'Amass'],
     links: [
       { label: 'Demo Results', icon: BarChart, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Get Tool', icon: Download, href: '#contact' },
     ],
+    highlight: '500+ Subdomains Found',
   },
   {
-    title: 'Ultra API Scanner',
-    type: 'API Security Framework',
+    title: 'Payment Gateway Security Suite',
+    type: 'Security Training Platform',
     description:
-      'Advanced API security scanner with JWT analysis, GraphQL testing, IDOR/BOLA detection, authentication fuzzing, smart mutation capabilities, and dynamic CLI interface.',
-    tech: ['Python', 'GraphQL', 'REST', 'OAuth', 'JWT'],
+      'Complete payment workflow simulation for security training with OTP/PIN verification testing, race condition scenarios, TOCTOU attacks, replay attack testing, and webhook exploitation. Used by security teams for training.',
+    tech: ['Node.js', 'React', 'Express', 'MongoDB', 'Redis'],
     links: [
-      { label: 'Watch Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Documentation', icon: BookOpen, href: '#contact' },
     ],
   },
   {
-    title: 'Fake bKash Payment Gateway Suite',
-    type: 'Payment Simulation System',
+    title: 'Web Application Scanner',
+    type: 'Custom DAST Tool',
     description:
-      'Realistic fake PSP system with complete frontend and backend, client branding, callback logic, API key management, and test integration capabilities for security research.',
-    tech: ['React', 'Node.js', 'Express', 'JSON', 'API'],
+      'Automated vulnerability detection with crawling, endpoint discovery, XSS detection (Reflected/Stored/DOM), SQL Injection testing, CSRF validation, security header analysis, and detailed HTML report generation with POC.',
+    tech: ['Python', 'Selenium', 'Requests', 'HTML'],
     links: [
-      { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Watch Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Source Code', icon: Code, href: '#contact' },
     ],
   },
   {
-    title: 'LinkedIn Smart Apply Bot',
-    type: 'Automation Tool',
+    title: 'LinkedIn Automation Bot',
+    type: 'Security-Focused Automation',
     description:
-      'Advanced job application automation with smart form filling, resume optimization, cover letter generation, and application tracking features.',
-    tech: ['Python', 'Selenium', 'AI', 'Automation'],
+      'Browser automation demonstrating security implications with multi-step form automation, anti-detection flow, human-like behavior simulation, captcha handling, and session management. Used in red team engagements.',
+    tech: ['Puppeteer', 'Node.js', 'Anti-Detection'],
     links: [
       { label: 'Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
   },
   {
-    title: 'UAE Crypto OSINT Project',
-    type: 'Intelligence Gathering',
+    title: 'Session Hijacking Toolkit',
+    type: 'Session Security Testing',
     description:
-      'Comprehensive crypto wallet leak tracking system using breach databases and dark web scanning. Delivered for international client with repeat orders.',
-    tech: ['Python', 'OSINT', 'Blockchain', 'Dark Web'],
+      'Advanced session security testing with cookie attribute analysis, session fixation detection, JWT decoding and algorithm confusion testing, session timeout automation, and concurrent session testing capabilities.',
+    tech: ['Python', 'Burp Suite', 'JWT', 'Extensions'],
     links: [
       { label: 'Case Study', icon: BookOpen, href: '#contact' },
     ],
-    highlight: '$200 Client Project',
   },
 ];
 
