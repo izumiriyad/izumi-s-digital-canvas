@@ -90,12 +90,12 @@ const BlogSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-header"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Blog</span> & Writeups
+          <h2 className="section-title">
+            <span className="glitch-text text-gradient" data-text="Blog & Writeups">Blog & Writeups</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-subtitle">
             Security research, CVE disclosures, and technical deep-dives into vulnerabilities I have discovered
           </p>
         </motion.div>
