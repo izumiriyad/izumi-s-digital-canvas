@@ -116,9 +116,7 @@ const ContactSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="glitch-text text-gradient" data-text="Let's Build Something Great">
-              Let's Build Something Great
-            </span>
+            <span className="text-gradient">Let's Build Something Great</span>
           </h2>
           <p className="section-subtitle">
             Ready to break or build something securely? Let's discuss your next security 

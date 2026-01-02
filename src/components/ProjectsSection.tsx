@@ -111,9 +111,7 @@ const ProjectsSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="glitch-text text-gradient" data-text="Arsenal & Projects">
-              Arsenal & Projects
-            </span>
+            <span className="text-gradient">Arsenal & Projects</span>
           </h2>
           <p className="section-subtitle">
             Custom-built security tools and automation systems designed for real-world

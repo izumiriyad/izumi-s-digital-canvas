@@ -110,9 +110,7 @@ const PricingSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="glitch-text text-gradient" data-text="Security Packages">
-              Security Packages
-            </span>
+            <span className="text-gradient">Security Packages</span>
           </h2>
           <p className="section-subtitle">
             Transparent pricing for professional security services. Custom quotes available for enterprise needs.

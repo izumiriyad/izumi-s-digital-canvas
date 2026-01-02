@@ -79,7 +79,7 @@ const AboutSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="glitch-text text-gradient" data-text="About Me">About Me</span>
+            <span className="text-gradient">About Me</span>
           </h2>
           <p className="section-subtitle">
             Offensive Security Engineer specializing in red teaming, API security, and security automation.

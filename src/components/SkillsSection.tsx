@@ -125,9 +125,7 @@ const SkillsSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="glitch-text text-gradient" data-text="Technical Proficiency">
-              Technical Proficiency
-            </span>
+            <span className="text-gradient">Technical Proficiency</span>
           </h2>
           <p className="section-subtitle">
             6+ years of hands-on experience in offensive security, automation, and tool development
