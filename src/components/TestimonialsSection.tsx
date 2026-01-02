@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Quote, Star, Shield, Code, Bug } from 'lucide-react';
 import {
@@ -6,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
 
 interface Testimonial {
@@ -91,6 +93,24 @@ const typeColors = {
 };
 
 const TestimonialsSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollTo = useCallback((index: number) => {
+    api?.scrollTo(index);
+  }, [api]);
   return (
     <section id="testimonials" className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
@@ -120,6 +140,7 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
         >
           <Carousel
+            setApi={setApi}
             opts={{
               align: "start",
               loop: true,
@@ -172,8 +193,25 @@ const TestimonialsSection = () => {
                 );
               })}
             </CarouselContent>
-            <div className="flex justify-center gap-4 mt-8">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <CarouselPrevious className="static translate-y-0 border-neon-green/30 hover:border-neon-green hover:bg-neon-green/10 hover:text-neon-green" />
+              
+              {/* Dot Indicators */}
+              <div className="flex gap-2">
+                {Array.from({ length: count }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === current
+                        ? 'bg-neon-green w-6 shadow-[0_0_10px_rgba(0,255,65,0.5)]'
+                        : 'bg-neon-green/30 hover:bg-neon-green/50'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
               <CarouselNext className="static translate-y-0 border-neon-green/30 hover:border-neon-green hover:bg-neon-green/10 hover:text-neon-green" />
             </div>
           </Carousel>
