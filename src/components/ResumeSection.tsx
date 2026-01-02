@@ -1,106 +1,88 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Award, GraduationCap, Download, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Briefcase, Award, GraduationCap, Download, Mail, MapPin, ExternalLink, Shield, Target, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const experience = [
   {
-    title: 'Freelance Security Researcher & Tool Developer',
-    period: '2019 - Present',
+    title: 'Offensive Security Engineer (Independent Consultant)',
+    period: '2017 - Present',
+    description: 'Specialized in red team engagements, API security assessments, and offensive security automation for mid-to-large organizations across fintech, SaaS, healthcare, and eCommerce sectors.',
     achievements: [
-      'Delivered $200 UAE crypto intelligence recon project with repeat client orders',
-      'Built Phantom Backend Cloud v4.0 - Enterprise-grade recon platform with ML threat scoring',
-      'Developed Bug Bounty Hunter Pro automation suite with multi-threaded payloads',
-      'Created realistic bKash payment gateway simulation system for security testing',
-      'Scanned 200+ targets using custom bounty hunting toolkit',
-      'Built LinkedIn Smart Apply Bot with advanced form automation',
+      'Conducted 50+ full-scope penetration tests across web applications, APIs, cloud infrastructure, and mobile backends',
+      'Identified 100+ high/critical findings including authentication bypass, chained IDOR exploitation, and SSRF→RCE pivots',
+      'Maintained 98% post-remediation success rate with zero repeat vulnerabilities',
+      'Discovered critical payment gateway vulnerabilities saving clients $500K+ in potential fraud',
+      'Built UltraAPI framework reducing API testing time by 70%',
+      'Developed automated recon systems processing 10,000+ subdomains in minutes',
     ],
+  },
+];
+
+const keyAchievements = [
+  {
+    icon: Shield,
+    title: '50+ Pentests',
+    description: 'Comprehensive penetration tests across fintech, healthcare, SaaS, and eCommerce',
+  },
+  {
+    icon: Target,
+    title: '100+ Vulnerabilities',
+    description: 'High/critical vulnerabilities identified and responsibly disclosed',
+  },
+  {
+    icon: Trophy,
+    title: 'Top 5% TryHackMe',
+    description: 'Global ranking on offensive security platform',
+  },
+  {
+    icon: Award,
+    title: '98% Success Rate',
+    description: 'Post-remediation success with zero repeat vulnerabilities',
   },
 ];
 
 const keyProjects = [
   {
-    title: 'Phantom Backend Cloud v4.0',
-    subtitle: 'Enterprise Security Platform',
-    description: 'ML-based threat scoring platform with subdomain enumeration, API leak detection, passive recon engine, and CVE fetching capabilities.',
+    title: 'UltraAPI Framework',
+    subtitle: 'API Security Testing',
+    description: 'Advanced API exploitation framework with JWT/OAuth detection, automated fuzzing, and BOLA/IDOR scanning. Adopted by 5+ security teams.',
   },
   {
-    title: 'UAE Crypto OSINT Project',
-    subtitle: 'Client Commission - $200',
-    description: 'Delivered comprehensive crypto wallet leak tracking system using breach databases and dark web scanning for international client.',
+    title: 'Recon Automation System',
+    subtitle: 'Attack Surface Mapping',
+    description: 'Comprehensive attack surface discovery integrating Amass, Subfinder, nuclei. Reduced recon time from 6+ hours to 15 minutes.',
   },
   {
-    title: 'Bug Bounty Hunter Pro',
-    subtitle: 'Automation Suite',
-    description: 'End-to-end bounty hunting automation with auth bypass, token brute-forcing, and X-Forwarded logic implementation.',
+    title: 'Payment Gateway Suite',
+    subtitle: 'Security Testing Tool',
+    description: 'Complete payment simulation with OTP/PIN verification, race condition testing, and webhook exploitation scenarios.',
   },
   {
-    title: 'Fake bKash Gateway Suite',
-    subtitle: 'Payment Simulation System',
-    description: 'Complete PSP simulation with frontend/backend, client branding, callback logic, and API key management.',
+    title: 'Web Security Scanner',
+    subtitle: 'Custom DAST Tool',
+    description: 'Automated vulnerability detection for XSS, SQLi, CSRF with detailed HTML reports and POC generation.',
   },
 ];
 
 const certifications = [
-  'Attacking Network Protocols (James Forshaw) - Feb 2025',
-  'Complete 2024 Web Dev Bootcamp - Dec 2024',
-  'CompTIA Network+ N10-008 - Jun 2024',
-  'Complete Cyber Security Course - Nov 2022',
-  'SANS SEC542 Web App Pentesting - Jul 2022',
-  'Website Hacking / Penetration Testing - Oct 2020',
+  'Certified Ethical Hacker (CEH) — EC-Council',
+  'Offensive Security OSCP Training (In Progress - 2025)',
+  'CompTIA Network+ N10-008 — CompTIA',
+  'PortSwigger Web Security Academy — Complete',
+  'The Complete 2024 Web Development Bootcamp',
+  'SANS SEC542 Web App Pentesting',
 ];
 
 const technicalSkills = {
-  'Programming Languages': ['Python', 'JavaScript', 'Node.js', 'Bash', 'Go'],
-  'Security Tools': ['Burp Suite', 'FFUF', 'Nmap', 'Nuclei', 'Metasploit Pro', 'Acunetix Pro', 'Nessus Pro'],
-  'Specializations': ['API Security', 'Auth Bypass', 'Automation', 'OSINT', 'Payment Gateway Spoofing'],
-  'Technologies': ['React', 'Express', 'Docker', 'Kubernetes', 'GraphQL', 'REST APIs'],
+  'Security Tools': ['Burp Suite Pro', 'Metasploit Pro', 'Nessus Pro', 'OWASP ZAP', 'Nmap', 'Nuclei', 'ffuf'],
+  'Programming': ['JavaScript/Node.js', 'Python 3', 'Bash', 'React.js', 'Express.js', 'GraphQL'],
+  'Vulnerability Expertise': ['API Security', 'Auth Bypass', 'IDOR/BOLA', 'SSRF', 'JWT/OAuth Abuse', 'Payment Gateway'],
+  'Platforms': ['HackerOne', 'Bugcrowd', 'TryHackMe', 'HackTheBox', 'Kali Linux', 'Docker'],
 };
 
 const ResumeSection = () => {
   const handleDownloadResume = () => {
-    // Create resume content
-    const resumeContent = `
-AFTAB AHOMOD RIYAD (IZUMI)
-Security Researcher • Offensive Engineer • Automation Architect
-
-CONTACT
-Email: amiizumi00@gmail.com
-LinkedIn: linkedin.com/in/zeroizumi
-GitHub: github.com/izumiriyad
-Location: Dhaka, Bangladesh (GMT+6)
-
-PROFESSIONAL SUMMARY
-Self-taught security researcher with 5+ years of experience in offensive security, 
-API testing, and automation development. Expert in reverse engineering, auth bypass 
-techniques, and full-stack security implementations.
-
-EXPERIENCE
-Freelance Security Researcher & Tool Developer (2019 - Present)
-• Delivered $200 UAE crypto intelligence recon project
-• Built Phantom Backend Cloud v4.0 - Enterprise-grade recon platform
-• Developed Bug Bounty Hunter Pro automation suite
-• Created bKash payment gateway simulation system
-• Scanned 200+ targets using custom toolkit
-
-CERTIFICATIONS
-• Attacking Network Protocols (James Forshaw) - Feb 2025
-• Complete 2024 Web Dev Bootcamp - Dec 2024
-• CompTIA Network+ N10-008 - Jun 2024
-• SANS SEC542 Web App Pentesting - Jul 2022
-
-SKILLS
-Programming: Python, JavaScript, Node.js, Bash, Go
-Security Tools: Burp Suite, FFUF, Nmap, Nuclei, Metasploit
-Specializations: API Security, Auth Bypass, Automation, OSINT
-    `.trim();
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Aftab_Ahomod_Riyad_Resume.txt';
-    a.click();
-    URL.revokeObjectURL(url);
+    window.open('/resume.pdf', '_blank');
   };
 
   return (
@@ -128,18 +110,18 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
           viewport={{ once: true }}
           className="bg-card border border-border rounded-xl p-8 mb-8 text-center"
         >
-          <h3 className="text-3xl font-bold text-primary mb-2">Aftab Ahomod Riyad</h3>
+          <h3 className="text-3xl font-bold text-primary mb-2">Aftab Ahomod Riyad (Izumi)</h3>
           <p className="font-mono text-accent text-lg mb-4">
-            Security Researcher | Offensive Engineer | Automation Architect
+            Red Team & API Security Specialist | Security Automation Engineer | Offensive Security Researcher
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-primary" />
-              <span>amiizumi00@gmail.com</span>
+              <span>aftabahomodriyad@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Dhaka, Bangladesh (GMT+6)</span>
+              <span>Dhaka, Bangladesh (GMT+6) • Remote Ready</span>
             </div>
             <a
               href="https://www.linkedin.com/in/zeroizumi/"
@@ -151,6 +133,25 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
               <span>LinkedIn</span>
             </a>
           </div>
+        </motion.div>
+
+        {/* Key Achievements Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+        >
+          {keyAchievements.map((achievement, index) => (
+            <div
+              key={index}
+              className="bg-card border border-border rounded-xl p-4 text-center hover:border-primary/50 transition-colors"
+            >
+              <achievement.icon className="w-8 h-8 text-primary mx-auto mb-2" />
+              <h4 className="font-bold text-lg">{achievement.title}</h4>
+              <p className="text-xs text-muted-foreground">{achievement.description}</p>
+            </div>
+          ))}
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -170,11 +171,11 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
                 <h4 className="text-xl font-bold text-primary">Professional Summary</h4>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                Self-taught security researcher with 5+ years of experience in offensive security, 
-                API testing, and automation development. Specializes in building custom tools for 
-                bug bounty hunting, creating payment gateway simulations, and delivering client-targeted 
-                OSINT projects. Expert in reverse engineering, auth bypass techniques, and full-stack 
-                security implementations.
+                Offensive Security Engineer and API Security Specialist with 6+ years of hands-on experience in red teaming, 
+                web application pentesting, and advanced security automation. Specialized in discovering critical authentication 
+                bypasses, API logic flaws, business logic vulnerabilities, and building automated reconnaissance systems that 
+                reduce manual assessment time by 70%. Verified security researcher on HackerOne and Bugcrowd with disclosed 
+                vulnerabilities including critical findings in payment platforms.
               </p>
             </motion.div>
 
@@ -196,7 +197,8 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
                 {experience.map((exp, index) => (
                   <div key={index} className="timeline-item">
                     <h5 className="font-bold text-lg">{exp.title}</h5>
-                    <p className="text-accent font-mono text-sm mb-3">{exp.period}</p>
+                    <p className="text-accent font-mono text-sm mb-2">{exp.period}</p>
+                    <p className="text-muted-foreground text-sm mb-3">{exp.description}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, i) => (
                         <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
@@ -221,7 +223,7 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Award className="w-5 h-5 text-primary" />
                 </div>
-                <h4 className="text-xl font-bold text-primary">Key Projects</h4>
+                <h4 className="text-xl font-bold text-primary">Key Projects & Offensive Tools</h4>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -294,6 +296,30 @@ Specializations: API Security, Auth Bypass, Automation, OSINT
                     {cert}
                   </div>
                 ))}
+              </div>
+            </motion.div>
+
+            {/* Education */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card border border-border rounded-xl p-6"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="text-xl font-bold text-primary">Education</h4>
+              </div>
+              <div>
+                <h5 className="font-bold">BSc in Computer Science & Engineering</h5>
+                <p className="text-accent text-sm">American International University-Bangladesh (AIUB)</p>
+                <p className="text-muted-foreground text-sm mt-1">In Progress • Focus: Cybersecurity, Network Security, Cryptography</p>
+                <div className="mt-3 text-sm text-muted-foreground">
+                  <p>• SSC: Golden GPA 5.0</p>
+                  <p>• HSC: Golden GPA 5.0</p>
+                </div>
               </div>
             </motion.div>
 
