@@ -3,6 +3,7 @@ import { Code, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Terminal from './Terminal';
 import heroBg from '@/assets/hero-bg.jpg';
+import profilePhoto from '@/assets/izumi-profile.jpg';
 
 const HeroSection = () => {
   const scrollToProjects = () => {
@@ -122,8 +123,45 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Content - Terminal */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Content - Profile Photo & Terminal */}
+          <div className="flex flex-col items-center lg:items-end gap-8">
+            {/* Profile Photo with Glowing Border */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="relative"
+            >
+              {/* Outer glow ring */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-md opacity-75 animate-pulse" />
+              
+              {/* Inner glow ring */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full opacity-50" />
+              
+              {/* Profile image container */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-primary/50">
+                <img
+                  src={profilePhoto}
+                  alt="Aftab Ahomod Riyad - Security Researcher"
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Scanline overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+              </div>
+              
+              {/* Floating particles around photo */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0"
+              >
+                <div className="absolute top-0 left-1/2 w-2 h-2 bg-primary rounded-full blur-sm" />
+                <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-accent rounded-full blur-sm" />
+                <div className="absolute top-1/2 left-0 w-1 h-1 bg-primary rounded-full blur-sm" />
+              </motion.div>
+            </motion.div>
+
             <Terminal />
           </div>
         </div>
