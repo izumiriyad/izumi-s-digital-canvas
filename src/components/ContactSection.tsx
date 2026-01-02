@@ -23,33 +23,32 @@ const services = [
   {
     icon: Shield,
     title: 'Penetration Testing',
-    description: 'Web apps, APIs, and custom security assessments',
+    description: 'Web apps, APIs, cloud infrastructure, and mobile backends',
   },
   {
     icon: Code,
-    title: 'Custom Tool Development',
-    description: 'Recon scripts, automation bots, and security tools',
+    title: 'Security Automation',
+    description: 'Custom recon tools, API scanners, and offensive frameworks',
   },
   {
     icon: Search,
-    title: 'OSINT & Crypto Recon',
-    description: 'Intelligence gathering and threat analysis',
+    title: 'OSINT & Threat Intel',
+    description: 'Crypto wallet tracking, breach analysis, dark web scanning',
   },
   {
     icon: CreditCard,
-    title: 'Payment Gateway Simulation',
-    description: 'Fake PSP systems for security testing',
+    title: 'Fintech Security',
+    description: 'Payment gateway testing, OTP bypass, fraud prevention',
   },
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/izumiriyad', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/zeroizumi/', label: 'LinkedIn' },
+  { icon: Briefcase, href: 'https://www.upwork.com/freelancers/~012d71f9fb100a123f', label: 'Upwork' },
+  { icon: Briefcase, href: 'https://www.fiverr.com/s/xXRPgBx', label: 'Fiverr' },
+  { icon: Mail, href: 'mailto:aftabahomodriyad@gmail.com', label: 'Email' },
   { icon: Youtube, href: 'https://www.youtube.com/@learnearning24', label: 'Learning Channel' },
   { icon: Youtube, href: 'https://www.youtube.com/@techgothacked', label: 'Tech Channel' },
-  { icon: Youtube, href: 'https://www.youtube.com/@godgameplay_', label: 'Gaming Channel' },
-  { icon: Briefcase, href: 'https://www.upwork.com/freelancers/~012d71f9fb100a123f', label: 'Upwork' },
-  { icon: Mail, href: 'mailto:amiizumi00@gmail.com', label: 'Email' },
 ];
 
 const ContactSection = () => {
