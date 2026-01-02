@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Code, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Terminal from './Terminal';
+import AnimatedCounter from './AnimatedCounter';
 import heroBg from '@/assets/hero-bg.jpg';
 import profilePhoto from '@/assets/izumi-profile.jpg';
 
@@ -101,26 +102,12 @@ const HeroSection = () => {
               </Button>
             </motion.div>
 
-            {/* Stats Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-8 mt-12 justify-center lg:justify-start"
-            >
-              {[
-                { value: '5+', label: 'Years Experience' },
-                { value: '200+', label: 'Targets Scanned' },
-                { value: '15+', label: 'Tools Built' },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl font-bold font-mono text-primary">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
+            {/* Stats Row with Animated Counters */}
+            <div className="flex gap-8 mt-12 justify-center lg:justify-start">
+              <AnimatedCounter value="5+" label="Years Experience" duration={1.5} />
+              <AnimatedCounter value="200+" label="Targets Scanned" duration={2} />
+              <AnimatedCounter value="15+" label="Tools Built" duration={1.8} />
+            </div>
           </div>
 
           {/* Right Content - Profile Photo & Terminal */}
