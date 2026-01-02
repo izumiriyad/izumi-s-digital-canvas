@@ -130,24 +130,28 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="relative"
+              className="relative group cursor-pointer"
+              whileHover={{ scale: 1.05 }}
             >
-              {/* Outer glow ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-md opacity-75 animate-pulse" />
+              {/* Intense outer glow */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-xl opacity-60 group-hover:opacity-100 group-hover:blur-2xl transition-all duration-500 animate-pulse" />
+              
+              {/* Secondary glow layer */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-accent via-primary to-accent rounded-full blur-lg opacity-40 group-hover:opacity-80 transition-all duration-500" />
               
               {/* Inner glow ring */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full opacity-50" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
               
               {/* Profile image container */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-primary/50">
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-primary group-hover:border-primary/100 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,136,0.3)] group-hover:shadow-[0_0_60px_rgba(0,255,136,0.6),0_0_100px_rgba(0,153,255,0.4)]">
                 <img
                   src={profilePhoto}
                   alt="Aftab Ahomod Riyad - Security Researcher"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:brightness-110 group-hover:contrast-105 transition-all duration-300"
                 />
                 
                 {/* Scanline overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none group-hover:via-primary/10 transition-all duration-300" />
               </div>
               
               {/* Floating particles around photo */}
