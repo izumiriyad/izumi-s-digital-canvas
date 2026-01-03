@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart } from 'lucide-react';
 
+// Project images
+import ultraApiImage from '@/assets/projects/ultra-api-scanner.png';
+import phantomReconImage from '@/assets/projects/phantom-backend.png';
+import bkashGatewayImage from '@/assets/projects/bkash-gateway.png';
+import uaeCryptoImage from '@/assets/projects/uae-crypto-osint.png';
+import linkedinBotImage from '@/assets/projects/linkedin-bot.png';
+import bugBountyProImage from '@/assets/projects/bug-bounty-pro.png';
+
 const projects = [
   {
     title: 'UltraAPI Framework',
@@ -14,9 +22,10 @@ const projects = [
     ],
     featured: true,
     highlight: '70% Time Reduction',
+    image: ultraApiImage,
   },
   {
-    title: 'Automated Recon System',
+    title: 'Phantom Recon System',
     type: 'Attack Surface Mapping',
     description:
       'Comprehensive attack surface discovery integrating Amass, Subfinder, nuclei with automated subdomain takeover detection, technology fingerprinting, and continuous monitoring. Reduced recon time from 6+ hours to 15 minutes.',
@@ -26,6 +35,7 @@ const projects = [
       { label: 'Get Tool', icon: Download, href: '#contact' },
     ],
     highlight: '500+ Subdomains Found',
+    image: phantomReconImage,
   },
   {
     title: 'Payment Gateway Security Suite',
@@ -37,17 +47,19 @@ const projects = [
       { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Documentation', icon: BookOpen, href: '#contact' },
     ],
+    image: bkashGatewayImage,
   },
   {
-    title: 'Web Application Scanner',
-    type: 'Custom DAST Tool',
+    title: 'UAE Crypto OSINT Dashboard',
+    type: 'Breach Intelligence Platform',
     description:
-      'Automated vulnerability detection with crawling, endpoint discovery, XSS detection (Reflected/Stored/DOM), SQL Injection testing, CSRF validation, security header analysis, and detailed HTML report generation with POC.',
-    tech: ['Python', 'Selenium', 'Requests', 'HTML'],
+      'Real-time breach intelligence monitoring platform that analyzes breach dump patterns and wallet correlations. Features dashboard visualization, breach paste correlation, and automated report generation for crypto-related security incidents.',
+    tech: ['React', 'Python', 'OSINT', 'Data Analysis'],
     links: [
       { label: 'Watch Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
-      { label: 'Source Code', icon: Code, href: '#contact' },
+      { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
+    image: uaeCryptoImage,
   },
   {
     title: 'LinkedIn Automation Bot',
@@ -59,16 +71,18 @@ const projects = [
       { label: 'Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
+    image: linkedinBotImage,
   },
   {
-    title: 'Session Hijacking Toolkit',
-    type: 'Session Security Testing',
+    title: 'Bug Bounty Pro Toolkit',
+    type: 'Security Testing Arsenal',
     description:
-      'Advanced session security testing with cookie attribute analysis, session fixation detection, JWT decoding and algorithm confusion testing, session timeout automation, and concurrent session testing capabilities.',
-    tech: ['Python', 'Burp Suite', 'JWT', 'Extensions'],
+      'Comprehensive collection of custom security scripts including privilege escalation, auth bypass, deep reconnaissance, backend cloud analysis, and network harvesting tools. A complete toolkit for professional bug bounty hunters.',
+    tech: ['Bash', 'Python', 'Shell', 'Security'],
     links: [
       { label: 'Case Study', icon: BookOpen, href: '#contact' },
     ],
+    image: bugBountyProImage,
   },
 ];
 
@@ -135,30 +149,28 @@ const ProjectsSection = () => {
                 project.featured ? 'md:col-span-2 lg:col-span-1' : ''
               }`}
             >
-              {/* Project Image/Icon Area */}
-              <div className="relative h-48 bg-gradient-to-br from-secondary to-card flex items-center justify-center overflow-hidden">
-                {/* Grid Pattern */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,255,136,0.03) 10px, rgba(0,255,136,0.03) 20px)',
-                  }}
+              {/* Project Image Area */}
+              <div className="relative h-48 bg-gradient-to-br from-secondary to-card overflow-hidden">
+                {/* Project Image */}
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
                 
-                {/* Icon */}
-                <Code className="w-16 h-16 text-primary/50 group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
 
                 {/* Highlight Badge */}
                 {project.highlight && (
-                  <div className="absolute top-4 right-4 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-mono border border-primary/30">
+                  <div className="absolute top-4 right-4 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-mono border border-primary/30 backdrop-blur-sm">
                     {project.highlight}
                   </div>
                 )}
 
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-4 left-4 bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-mono border border-accent/30">
+                  <div className="absolute top-4 left-4 bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-mono border border-accent/30 backdrop-blur-sm">
                     Featured
                   </div>
                 )}
