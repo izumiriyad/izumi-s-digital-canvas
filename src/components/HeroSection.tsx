@@ -109,9 +109,9 @@ const HeroSection = () => {
 
             {/* Stats Row with Animated Counters */}
             <div className="flex gap-8 mt-12 justify-center lg:justify-start">
+              <AnimatedCounter value="500+" label="Vulnerabilities Found" duration={2} />
+              <AnimatedCounter value="50+" label="Companies Secured" duration={1.8} />
               <AnimatedCounter value="5+" label="Years Experience" duration={1.5} />
-              <AnimatedCounter value="200+" label="Targets Scanned" duration={2} />
-              <AnimatedCounter value="15+" label="Tools Built" duration={1.8} />
             </div>
           </div>
 
