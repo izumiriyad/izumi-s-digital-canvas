@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Shield, Zap, Crown, Mail } from 'lucide-react';
+import { Check, X, Shield, Zap, Crown, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PricingTier {
@@ -72,6 +72,23 @@ const pricingTiers: PricingTier[] = [
   },
 ];
 
+const comparisonFeatures = [
+  { feature: 'Web Application Testing', basic: true, full: true, retainer: true },
+  { feature: 'API Security Review', basic: 'Basic', full: 'Full', retainer: 'Continuous' },
+  { feature: 'OWASP Top 10 Coverage', basic: true, full: true, retainer: true },
+  { feature: 'Business Logic Testing', basic: false, full: true, retainer: true },
+  { feature: 'Authentication Testing', basic: true, full: true, retainer: true },
+  { feature: 'JWT/OAuth Exploitation', basic: false, full: true, retainer: true },
+  { feature: 'Payment Gateway Review', basic: false, full: true, retainer: true },
+  { feature: 'Custom Tool Development', basic: false, full: false, retainer: true },
+  { feature: 'Red Team Exercises', basic: false, full: false, retainer: true },
+  { feature: 'Retesting Rounds', basic: '1', full: '2', retainer: 'Unlimited' },
+  { feature: 'Delivery Time', basic: '5-7 days', full: '10-14 days', retainer: 'Ongoing' },
+  { feature: 'Response SLA', basic: '72h', full: '48h', retainer: '24h' },
+  { feature: 'Report Type', basic: 'Summary', full: 'Detailed + POCs', retainer: 'Full + Training' },
+  { feature: 'Direct Communication', basic: 'Email', full: 'Email + Call', retainer: 'Slack/Discord' },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -89,6 +106,16 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.5 },
   },
+};
+
+const renderCellValue = (value: boolean | string) => {
+  if (value === true) {
+    return <Check className="w-5 h-5 text-primary mx-auto" />;
+  }
+  if (value === false) {
+    return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" />;
+  }
+  return <span className="text-sm text-foreground">{value}</span>;
 };
 
 const PricingSection = () => {
@@ -188,6 +215,62 @@ const PricingSection = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Comparison Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-20 max-w-5xl mx-auto"
+        >
+          <h3 className="text-2xl font-bold text-center mb-8">
+            <span className="text-primary font-mono">//</span> Feature Comparison
+          </h3>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b border-primary/30">
+                  <th className="text-left py-4 px-4 font-semibold text-foreground">Feature</th>
+                  <th className="text-center py-4 px-4 font-semibold text-foreground">
+                    <div className="flex flex-col items-center gap-1">
+                      <Shield className="w-5 h-5 text-muted-foreground" />
+                      <span>Basic</span>
+                    </div>
+                  </th>
+                  <th className="text-center py-4 px-4 font-semibold text-primary">
+                    <div className="flex flex-col items-center gap-1">
+                      <Zap className="w-5 h-5 text-primary" />
+                      <span>Full</span>
+                    </div>
+                  </th>
+                  <th className="text-center py-4 px-4 font-semibold text-foreground">
+                    <div className="flex flex-col items-center gap-1">
+                      <Crown className="w-5 h-5 text-accent" />
+                      <span>Retainer</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonFeatures.map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-border/50 transition-colors hover:bg-primary/5 ${
+                      index % 2 === 0 ? 'bg-card/30' : 'bg-transparent'
+                    }`}
+                  >
+                    <td className="py-3 px-4 text-sm text-muted-foreground">{row.feature}</td>
+                    <td className="py-3 px-4 text-center">{renderCellValue(row.basic)}</td>
+                    <td className="py-3 px-4 text-center bg-primary/5">{renderCellValue(row.full)}</td>
+                    <td className="py-3 px-4 text-center">{renderCellValue(row.retainer)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </motion.div>
 
         {/* Enterprise Note */}
