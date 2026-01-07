@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, X, Shield, Zap, Crown, Mail } from 'lucide-react';
+import { Check, X, Shield, Zap, Crown, Mail, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PricingTier {
@@ -11,82 +11,85 @@ interface PricingTier {
   features: string[];
   highlighted?: boolean;
   cta: string;
+  fiverrLink?: string;
 }
 
 const pricingTiers: PricingTier[] = [
   {
-    name: 'Basic Pentest',
-    description: 'Essential security assessment for startups and small applications',
-    price: '$500',
+    name: 'Digital Footprint',
+    description: 'Single executive or small team OSINT assessment',
+    price: '$60',
     priceNote: 'Starting price',
     icon: Shield,
     features: [
-      'Single web application assessment',
-      'OWASP Top 10 vulnerability testing',
-      'Basic API security review',
-      'Authentication & session testing',
-      'Executive summary report',
-      '1 round of retesting included',
-      '5-7 day delivery',
+      'Social media security posture audit',
+      'Publicly available personal info audit',
+      'Email & phone exposure detection',
+      'Basic threat report with findings',
+      'Actionable security recommendations',
+      '3-5 day delivery',
     ],
-    cta: 'Get Started',
+    cta: 'Order on Fiverr',
+    fiverrLink: 'https://www.fiverr.com/s/Ldb93Po',
   },
   {
-    name: 'Full Assessment',
-    description: 'Comprehensive security audit for established platforms',
-    price: '$1,500',
+    name: 'Full OSINT Investigation',
+    description: 'Comprehensive corporate & executive team assessment',
+    price: '$90',
     priceNote: 'Starting price',
     icon: Zap,
     features: [
-      'Full web app + API pentest',
-      'Business logic vulnerability testing',
-      'JWT/OAuth exploitation testing',
-      'Payment gateway security review',
-      'IDOR/BOLA vulnerability hunting',
-      'Detailed technical report with POCs',
-      'Remediation guidance & consultation',
-      '2 rounds of retesting included',
-      '10-14 day delivery',
+      'Complete digital footprint analysis',
+      'Company structure & hierarchy mapping',
+      'Technology stack identification',
+      'Vendor & partner relationship discovery',
+      'Historical data breach exposure check',
+      'Credential leak detection',
+      'Corporate email compromise assessment',
+      'Detailed intelligence report',
+      '5-7 day delivery',
     ],
     highlighted: true,
-    cta: 'Most Popular',
+    cta: 'Order on Fiverr',
+    fiverrLink: 'https://www.fiverr.com/s/Ldb93Po',
   },
   {
-    name: 'Security Retainer',
-    description: 'Ongoing security partnership for continuous protection',
-    price: '$2,000',
-    priceNote: 'per month',
+    name: 'Social Engineering',
+    description: 'Full-scale OSINT + social engineering simulation',
+    price: '$160',
+    priceNote: 'Starting price',
     icon: Crown,
     features: [
-      'Dedicated security researcher',
-      'Continuous vulnerability monitoring',
-      'Priority response (24h SLA)',
-      'Monthly security assessments',
-      'Custom tool development',
-      'Red team simulation exercises',
-      'Security training for your team',
-      'Unlimited retesting',
-      'Direct Slack/Discord access',
+      'Complete OSINT investigation included',
+      'Multi-vector attack simulation',
+      'Phishing & pretexting campaigns',
+      'Phone-based social engineering tests',
+      'Dark web monitoring & threat intel',
+      'Comprehensive risk analysis',
+      'Executive briefing & training',
+      'Remediation roadmap',
+      '7-10 day delivery',
     ],
-    cta: 'Contact Me',
+    cta: 'Order on Fiverr',
+    fiverrLink: 'https://www.fiverr.com/s/Ldb93Po',
   },
 ];
 
 const comparisonFeatures = [
-  { feature: 'Web Application Testing', basic: true, full: true, retainer: true },
-  { feature: 'API Security Review', basic: 'Basic', full: 'Full', retainer: 'Continuous' },
-  { feature: 'OWASP Top 10 Coverage', basic: true, full: true, retainer: true },
-  { feature: 'Business Logic Testing', basic: false, full: true, retainer: true },
-  { feature: 'Authentication Testing', basic: true, full: true, retainer: true },
-  { feature: 'JWT/OAuth Exploitation', basic: false, full: true, retainer: true },
-  { feature: 'Payment Gateway Review', basic: false, full: true, retainer: true },
-  { feature: 'Custom Tool Development', basic: false, full: false, retainer: true },
-  { feature: 'Red Team Exercises', basic: false, full: false, retainer: true },
-  { feature: 'Retesting Rounds', basic: '1', full: '2', retainer: 'Unlimited' },
-  { feature: 'Delivery Time', basic: '5-7 days', full: '10-14 days', retainer: 'Ongoing' },
-  { feature: 'Response SLA', basic: '72h', full: '48h', retainer: '24h' },
-  { feature: 'Report Type', basic: 'Summary', full: 'Detailed + POCs', retainer: 'Full + Training' },
-  { feature: 'Direct Communication', basic: 'Email', full: 'Email + Call', retainer: 'Slack/Discord' },
+  { feature: 'Social Media Posture Audit', basic: true, full: true, retainer: true },
+  { feature: 'Personal Info Exposure Detection', basic: true, full: true, retainer: true },
+  { feature: 'Email & Phone Leak Detection', basic: true, full: true, retainer: true },
+  { feature: 'Professional Network Analysis', basic: false, full: true, retainer: true },
+  { feature: 'Company Hierarchy Mapping', basic: false, full: true, retainer: true },
+  { feature: 'Technology Stack Identification', basic: false, full: true, retainer: true },
+  { feature: 'Vendor/Partner Discovery', basic: false, full: true, retainer: true },
+  { feature: 'Data Breach Exposure Analysis', basic: false, full: true, retainer: true },
+  { feature: 'Credential Leak Detection', basic: false, full: true, retainer: true },
+  { feature: 'Dark Web Monitoring', basic: false, full: false, retainer: true },
+  { feature: 'Phishing Simulation', basic: false, full: false, retainer: true },
+  { feature: 'Phone-Based SE Testing', basic: false, full: false, retainer: true },
+  { feature: 'Executive Training', basic: false, full: false, retainer: true },
+  { feature: 'Delivery Time', basic: '3-5 days', full: '5-7 days', retainer: '7-10 days' },
 ];
 
 const containerVariants = {
@@ -137,10 +140,10 @@ const PricingSection = () => {
           className="section-header"
         >
           <h2 className="section-title">
-            <span className="text-gradient">Security Packages</span>
+            <span className="text-gradient">OSINT & Social Engineering</span>
           </h2>
           <p className="section-subtitle">
-            Transparent pricing for professional security services. Custom quotes available for enterprise needs.
+            Discover what attackers can learn about your organization before they strike. Professional intelligence gathering and security assessments.
           </p>
         </motion.div>
 
@@ -204,14 +207,27 @@ const PricingSection = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <Button
-                  onClick={handleContact}
-                  variant={tier.highlighted ? 'neon' : 'neon-outline'}
-                  className="w-full"
-                >
-                  <Mail className="w-4 h-4 mr-2" />
-                  {tier.cta}
-                </Button>
+                {tier.fiverrLink ? (
+                  <Button
+                    asChild
+                    variant={tier.highlighted ? 'neon' : 'neon-outline'}
+                    className="w-full"
+                  >
+                    <a href={tier.fiverrLink} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      {tier.cta}
+                    </a>
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleContact}
+                    variant={tier.highlighted ? 'neon' : 'neon-outline'}
+                    className="w-full"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    {tier.cta}
+                  </Button>
+                )}
               </div>
             </motion.div>
           ))}
