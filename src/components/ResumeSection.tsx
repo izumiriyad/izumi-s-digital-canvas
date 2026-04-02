@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { Briefcase, Award, GraduationCap, Download, Mail, MapPin, ExternalLink, Shield, Target, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -95,9 +96,7 @@ const ResumeSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Resume</span>
-          </h2>
+          <SectionTitle text="Resume" />
           <p className="section-subtitle">
             My professional journey, achievements, and technical expertise in cybersecurity.
           </p>

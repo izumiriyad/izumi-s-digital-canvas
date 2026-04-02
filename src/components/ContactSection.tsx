@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import SectionTitle from './SectionTitle';
 import { 
   Mail, 
   Send, 
@@ -115,9 +116,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Let's Build Something Great</span>
-          </h2>
+          <SectionTitle text="Let's Build Something Great" />
           <p className="section-subtitle">
             Ready to break or build something securely? Let's discuss your next security 
             project or automation challenge.

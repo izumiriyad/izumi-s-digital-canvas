@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { Shield, Code2, Terminal, Globe, Database, Lock, Target, Zap } from 'lucide-react';
 
 const skills = [
@@ -78,9 +79,7 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">About Me</span>
-          </h2>
+          <SectionTitle text="About Me" />
           <p className="section-subtitle">
             Offensive Security Engineer specializing in red teaming, API security, and security automation.
           </p>
