@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart } from 'lucide-react';
 
 // Project images
