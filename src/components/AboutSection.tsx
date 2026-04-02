@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { Shield, Code2, Terminal, Globe, Database, Lock, Target, Zap } from 'lucide-react';
 
 const skills = [
