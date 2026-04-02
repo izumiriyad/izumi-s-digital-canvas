@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 import { Briefcase, Award, GraduationCap, Download, Mail, MapPin, ExternalLink, Shield, Target, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
