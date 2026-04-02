@@ -42,6 +42,7 @@ const Index = () => {
           <div className="grid-overlay" />
 
           {/* Navigation */}
+          <ScrollProgress />
           <Navbar />
           <FloatingHireButton />
 
