@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from '@/components/LoadingScreen';
 import MatrixRain from '@/components/MatrixRain';
 import Navbar from '@/components/Navbar';
+import ScrollProgress from '@/components/ScrollProgress';
 import HeroSection from '@/components/HeroSection';
 import FloatingHireButton from '@/components/FloatingHireButton';
 import ProjectsSection from '@/components/ProjectsSection';
