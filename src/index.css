@@ -67,11 +67,60 @@
     --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
     --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.15), transparent 70%);
   }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    
+    --primary: 152 80% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 40%;
+    
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 207 90% 45%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --warning: 38 100% 50%;
+    --warning-foreground: 0 0% 4%;
+    
+    --border: 0 0% 85%;
+    --input: 0 0% 90%;
+    --ring: 152 80% 35%;
+    
+    --neon-green: 152 80% 35%;
+    --neon-blue: 207 90% 45%;
+    --neon-red: 0 72% 51%;
+    --neon-yellow: 38 100% 50%;
+    --dark-base: 0 0% 98%;
+    --dark-card: 0 0% 100%;
+    --dark-border: 0 0% 85%;
+    
+    --shadow-neon: 0 4px 14px hsl(0 0% 0% / 0.08);
+    --shadow-neon-lg: 0 8px 30px hsl(0 0% 0% / 0.12);
+    --shadow-blue: 0 4px 14px hsl(207 90% 45% / 0.15);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.08), transparent 70%);
+  }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-300;
   }
   
   html {
