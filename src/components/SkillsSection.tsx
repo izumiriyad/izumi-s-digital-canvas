@@ -125,9 +125,7 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Technical Proficiency</span>
-          </h2>
+          <SectionTitle text="Technical Proficiency" />
           <p className="section-subtitle">
             6+ years of hands-on experience in offensive security, automation, and tool development
           </p>

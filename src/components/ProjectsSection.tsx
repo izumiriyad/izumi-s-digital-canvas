@@ -125,9 +125,7 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Arsenal & Projects</span>
-          </h2>
+          <SectionTitle text="Arsenal & Projects" />
           <p className="section-subtitle">
             Custom-built security tools and automation systems designed for real-world
             penetration testing and bug bounty hunting.

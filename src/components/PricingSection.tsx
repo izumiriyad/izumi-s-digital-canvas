@@ -199,9 +199,7 @@ const PricingSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Security Packages</span>
-          </h2>
+          <SectionTitle text="Security Packages" />
           <p className="section-subtitle">
             Transparent pricing for professional security services. Custom quotes available for enterprise needs.
           </p>

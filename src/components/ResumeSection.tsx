@@ -96,9 +96,7 @@ const ResumeSection = () => {
           viewport={{ once: true }}
           className="section-header"
         >
-          <h2 className="section-title">
-            <span className="text-gradient">Resume</span>
-          </h2>
+          <SectionTitle text="Resume" />
           <p className="section-subtitle">
             My professional journey, achievements, and technical expertise in cybersecurity.
           </p>
