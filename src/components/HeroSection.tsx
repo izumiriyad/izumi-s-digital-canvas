@@ -9,6 +9,15 @@ import heroBg from '@/assets/hero-bg.jpg';
 import profilePhoto from '@/assets/izumi-profile.jpg';
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const glowY1 = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const glowY2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -20,16 +29,18 @@ const HeroSection = () => {
   return (
     <section
       id="home"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
+      {/* Background Image with Parallax */}
+      <motion.div
+        className="absolute inset-0 z-0 will-change-transform"
         style={{
           backgroundImage: `url(${heroBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.3,
+          y: bgY,
         }}
       />
 
