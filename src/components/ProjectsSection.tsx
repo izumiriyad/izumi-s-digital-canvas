@@ -117,8 +117,8 @@ const ProjectsSection = () => {
   };
 
   return (
+    <ParallaxSection variant="dots" glowColor="primary">
     <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
