@@ -217,7 +217,6 @@ const ProjectsSection = () => {
         </motion.div>
       </div>
     </section>
-    </section>
     </ParallaxSection>
   );
 
