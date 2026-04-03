@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import RevealOnScroll from './RevealOnScroll';
 import { Github, Linkedin, Youtube, Mail, Heart, Code } from 'lucide-react';
 
 const Footer = () => {
