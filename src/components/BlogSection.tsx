@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import RevealOnScroll, { RevealItem } from './RevealOnScroll';
 import { FileText, ExternalLink, Calendar, Tag, AlertTriangle, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
