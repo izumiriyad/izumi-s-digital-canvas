@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Terminal from './Terminal';
