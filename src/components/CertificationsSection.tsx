@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import RevealOnScroll, { RevealItem } from './RevealOnScroll';
 import { Award, Shield } from "lucide-react";
 
 const certifications = [
