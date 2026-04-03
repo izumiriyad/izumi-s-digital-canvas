@@ -219,5 +219,6 @@ const ProjectsSection = () => {
     </section>
     </ParallaxSection>
   );
+};
 
 export default ProjectsSection;
