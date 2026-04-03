@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import ScrollProgress from '@/components/ScrollProgress';
 import HeroSection from '@/components/HeroSection';
 import FloatingHireButton from '@/components/FloatingHireButton';
+import BackToTop from '@/components/BackToTop';
 import ProjectsSection from '@/components/ProjectsSection';
 import BlogSection from '@/components/BlogSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
