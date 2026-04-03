@@ -71,7 +71,7 @@ const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </RevealOnScroll>
       </div>
     </section>
   );

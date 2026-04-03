@@ -180,10 +180,10 @@ const BlogSection = () => {
                     )}
                   </div>
                 </div>
-              </motion.article>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealOnScroll>
 
         {/* View All Button */}
         <motion.div

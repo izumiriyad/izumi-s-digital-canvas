@@ -70,10 +70,10 @@ const CertificationsSection = () => {
                   <h4 className="font-bold text-lg mb-1">{cert.name}</h4>
                   <p className="text-xs text-muted-foreground leading-tight">{cert.fullName}</p>
                 </div>
-              </motion.div>
+              </RevealItem>
             ))}
           </div>
-        </motion.div>
+        </RevealOnScroll>
       </div>
     </section>
   );
