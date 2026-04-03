@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
 import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart } from 'lucide-react';
 
@@ -116,6 +117,7 @@ const ProjectsSection = () => {
   };
 
   return (
+    <ParallaxSection variant="dots" glowColor="primary">
     <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
@@ -215,6 +217,7 @@ const ProjectsSection = () => {
         </motion.div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 

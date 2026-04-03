@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
 import { Shield, Code, Terminal, Database, Globe, Lock } from 'lucide-react';
 
@@ -112,6 +113,7 @@ const SkillBar = ({ skill, index }: { skill: Skill; index: number }) => {
 
 const SkillsSection = () => {
   return (
+    <ParallaxSection variant="grid" glowColor="accent">
     <section id="skills" className="py-24 relative">
       {/* Background Effects */}
       <div className="absolute top-1/3 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
@@ -187,6 +189,7 @@ const SkillsSection = () => {
         </motion.div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 

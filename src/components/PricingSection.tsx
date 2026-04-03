@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
 import { Check, X, Shield, Zap, Crown, Mail, ExternalLink, Search, Users, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -187,6 +188,7 @@ const PricingSection = () => {
   };
 
   return (
+    <ParallaxSection variant="orbs" glowColor="primary">
     <section id="pricing" className="py-24 relative">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
@@ -455,6 +457,7 @@ const PricingSection = () => {
         </motion.div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 
