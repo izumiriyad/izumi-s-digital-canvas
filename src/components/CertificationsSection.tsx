@@ -57,7 +57,6 @@ const CertificationsSection = () => {
                 variant="scale"
                 className="relative group"
               >
-              >
                 <div className="absolute inset-0 bg-gradient-to-r opacity-20 rounded-xl blur-xl group-hover:opacity-40 transition-opacity"
                   style={{ background: `linear-gradient(to right, var(--tw-gradient-stops))` }}
                 />
