@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
 import { Shield, Code, Terminal, Database, Globe, Lock } from 'lucide-react';
 
