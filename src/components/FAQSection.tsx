@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import RevealOnScroll from './RevealOnScroll';
 import {
   Accordion,
   AccordionContent,
@@ -52,12 +53,7 @@ const FAQSection = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <RevealOnScroll variant="blur" delay={0.2}>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
@@ -75,7 +71,7 @@ const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </RevealOnScroll>
       </div>
     </section>
   );

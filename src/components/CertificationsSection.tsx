@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import RevealOnScroll, { RevealItem } from './RevealOnScroll';
 import { Award, Shield } from "lucide-react";
 
 const certifications = [
@@ -48,21 +49,12 @@ const CertificationsSection = () => {
         </motion.div>
 
         {/* Certifications Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
+        <RevealOnScroll staggerChildren={0.12}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {certifications.map((cert, index) => (
-              <motion.div
+              <RevealItem
                 key={cert.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                variant="scale"
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r opacity-20 rounded-xl blur-xl group-hover:opacity-40 transition-opacity"
@@ -77,10 +69,10 @@ const CertificationsSection = () => {
                   <h4 className="font-bold text-lg mb-1">{cert.name}</h4>
                   <p className="text-xs text-muted-foreground leading-tight">{cert.fullName}</p>
                 </div>
-              </motion.div>
+              </RevealItem>
             ))}
           </div>
-        </motion.div>
+        </RevealOnScroll>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import RevealOnScroll from './RevealOnScroll';
 import { Github, Linkedin, Youtube, Mail, Heart, Code } from 'lucide-react';
 
 const Footer = () => {
@@ -7,14 +7,9 @@ const Footer = () => {
   return (
     <footer className="py-12 border-t border-border bg-secondary/30">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <RevealOnScroll variant="fadeUp" className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & Copyright */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center md:text-left"
-          >
+          <div className="text-center md:text-left">
             <a href="#home" className="font-mono text-xl font-bold mb-2 inline-block">
               <span className="text-accent">$</span>{' '}
               <span className="text-primary">izumi_</span>
@@ -23,15 +18,10 @@ const Footer = () => {
               © {currentYear} Aftab Ahomod Riyad. Built with{' '}
               <Heart className="w-4 h-4 text-destructive inline" /> for breaking & securing systems.
             </p>
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-4"
-          >
+          <div className="flex items-center gap-4">
             {[
               { icon: Github, href: 'https://github.com/izumiriyad' },
               { icon: Linkedin, href: 'https://www.linkedin.com/in/zeroizumi/' },
@@ -48,21 +38,16 @@ const Footer = () => {
                 <link.icon className="w-5 h-5" />
               </a>
             ))}
-          </motion.div>
+          </div>
 
           {/* Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center md:text-right"
-          >
+          <div className="text-center md:text-right">
             <p className="text-sm text-muted-foreground flex items-center gap-1 justify-center md:justify-end">
               <Code className="w-4 h-4 text-primary" />
               Built with React, TypeScript & Tailwind
             </p>
-          </motion.div>
-        </div>
+          </div>
+        </RevealOnScroll>
 
         {/* Bottom Decorative Line */}
         <div className="mt-8 pt-6 border-t border-border/50">

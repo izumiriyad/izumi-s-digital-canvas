@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import RevealOnScroll, { RevealItem } from './RevealOnScroll';
 import { FileText, ExternalLink, Calendar, Tag, AlertTriangle, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -101,19 +102,12 @@ const BlogSection = () => {
         </motion.div>
 
         {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <RevealOnScroll staggerChildren={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogPosts.map((post, index) => {
             const TypeIcon = typeConfig[post.type].icon;
             
             return (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative"
-              >
+              <RevealItem key={index} variant="fadeUp" className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
                 
                 <div className="relative bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 h-full flex flex-col hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,136,0.1)]">
@@ -185,10 +179,10 @@ const BlogSection = () => {
                     )}
                   </div>
                 </div>
-              </motion.article>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealOnScroll>
 
         {/* View All Button */}
         <motion.div
