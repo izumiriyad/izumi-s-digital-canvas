@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParallaxSection from './ParallaxSection';
 import { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { 
