@@ -46,6 +46,7 @@ const Index = () => {
           <ScrollProgress />
           <Navbar />
           <FloatingHireButton />
+          <BackToTop />
 
           {/* Main Sections */}
           <main>
