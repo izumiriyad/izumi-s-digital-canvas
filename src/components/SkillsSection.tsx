@@ -189,6 +189,7 @@ const SkillsSection = () => {
         </motion.div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 

@@ -457,6 +457,7 @@ const PricingSection = () => {
         </motion.div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 

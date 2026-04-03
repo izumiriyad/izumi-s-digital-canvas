@@ -47,9 +47,9 @@ const HeroSection = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
 
-      {/* Radial Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      {/* Radial Glow Effects with Parallax */}
+      <motion.div style={{ y: glowY1 }} className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl will-change-transform" />
+      <motion.div style={{ y: glowY2 }} className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl will-change-transform" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

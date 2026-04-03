@@ -216,7 +216,7 @@ const ProjectsSection = () => {
         </motion.div>
       </div>
     </section>
-  );
+    </ParallaxSection>
 };
 
 export default ProjectsSection;

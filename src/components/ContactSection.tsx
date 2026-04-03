@@ -285,6 +285,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
+    </ParallaxSection>
   );
 };
 
