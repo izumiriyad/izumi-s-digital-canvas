@@ -18,6 +18,18 @@ const HeroSection = () => {
   const glowY1 = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const glowY2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
+  // Scroll-linked text animations
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
+  const textScale = useTransform(scrollYProgress, [0, 0.4], [1, 0.9]);
+  const subtitleX = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
+  const ctaOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0, 0.3], [0, 40]);
+  const statsBlur = useTransform(scrollYProgress, [0, 0.3], [0, 10]);
+  const statsFilter = useTransform(statsBlur, v => `blur(${v}px)`);
+  const rightContentX = useTransform(scrollYProgress, [0, 0.4], [0, 60]);
+  const rightContentOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -60,6 +72,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              style={{ x: subtitleX, opacity: textOpacity }}
               className="font-mono text-accent text-lg mb-4"
             >
               Security Researcher | Offensive Engineer | Automation Architect
@@ -70,6 +83,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
+              style={{ y: textY, opacity: textOpacity, scale: textScale }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
               <span className="text-gradient">
@@ -86,6 +100,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
+              style={{ y: textY, opacity: textOpacity }}
               className="text-xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0"
             >
               Breaking systems for peaking my Dopamine dependency.
@@ -98,6 +113,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
+              style={{ opacity: ctaOpacity, y: ctaY }}
               className="flex flex-wrap gap-4 justify-center lg:justify-start"
             >
               <Button
@@ -120,15 +136,21 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Stats Row with Animated Counters */}
-            <div className="flex gap-8 mt-12 justify-center lg:justify-start">
+            <motion.div
+              style={{ filter: statsFilter, opacity: textOpacity }}
+              className="flex gap-8 mt-12 justify-center lg:justify-start"
+            >
               <AnimatedCounter value="500+" label="Vulnerabilities Found" duration={2} />
               <AnimatedCounter value="50+" label="Companies Secured" duration={1.8} />
               <AnimatedCounter value="5+" label="Years Experience" duration={1.5} />
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Content - Profile Photo & Terminal */}
-          <div className="flex flex-col items-center lg:items-end gap-8">
+          <motion.div
+            style={{ x: rightContentX, opacity: rightContentOpacity }}
+            className="flex flex-col items-center lg:items-end gap-8"
+          >
             {/* Profile Photo with Glowing Border */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -171,7 +193,7 @@ const HeroSection = () => {
             </motion.div>
 
             <Terminal />
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll Indicator */}
