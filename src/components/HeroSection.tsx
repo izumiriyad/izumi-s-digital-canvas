@@ -137,7 +137,7 @@ const HeroSection = () => {
 
             {/* Stats Row with Animated Counters */}
             <motion.div
-              style={{ filter: useTransform(statsBlur, v => `blur(${v}px)`), opacity: textOpacity }}
+              style={{ filter: statsFilter, opacity: textOpacity }}
               className="flex gap-8 mt-12 justify-center lg:justify-start"
             >
               <AnimatedCounter value="500+" label="Vulnerabilities Found" duration={2} />
