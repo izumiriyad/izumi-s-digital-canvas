@@ -99,6 +99,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
+              style={{ y: textY, opacity: textOpacity }}
               className="text-xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0"
             >
               Breaking systems for peaking my Dopamine dependency.
