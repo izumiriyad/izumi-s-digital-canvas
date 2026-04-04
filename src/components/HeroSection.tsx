@@ -192,7 +192,6 @@ const HeroSection = () => {
             </motion.div>
 
             <Terminal />
-          </div>
           </motion.div>
 
         {/* Scroll Indicator */}
