@@ -146,7 +146,10 @@ const HeroSection = () => {
             </motion.div>
 
           {/* Right Content - Profile Photo & Terminal */}
-          <div className="flex flex-col items-center lg:items-end gap-8">
+          <motion.div
+            style={{ x: rightContentX, opacity: rightContentOpacity }}
+            className="flex flex-col items-center lg:items-end gap-8"
+          >
             {/* Profile Photo with Glowing Border */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
