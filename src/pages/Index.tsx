@@ -7,6 +7,7 @@ import ScrollProgress from '@/components/ScrollProgress';
 import HeroSection from '@/components/HeroSection';
 import FloatingHireButton from '@/components/FloatingHireButton';
 import BackToTop from '@/components/BackToTop';
+import CustomCursor from '@/components/CustomCursor';
 import ProjectsSection from '@/components/ProjectsSection';
 import BlogSection from '@/components/BlogSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -39,6 +40,7 @@ const Index = () => {
       {!isLoading && (
         <div className="relative min-h-screen">
           {/* Background Effects */}
+          <CustomCursor />
           <MatrixRain />
           <div className="grid-overlay" />
 
