@@ -112,6 +112,19 @@ const AboutSection = () => {
           </p>
         </motion.div>
 
+        {/* Stats Counters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 py-8 px-6 bg-card border border-border rounded-2xl"
+        >
+          <AnimatedCounter value="6+" label="Years Experience" />
+          <AnimatedCounter value="500+" label="Vulnerabilities Found" />
+          <AnimatedCounter value="50+" label="Companies Secured" />
+          <AnimatedCounter value="15+" label="Custom Tools Built" />
+        </motion.div>
+
         {/* Platform Rankings */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
