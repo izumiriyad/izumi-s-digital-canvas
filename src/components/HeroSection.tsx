@@ -26,6 +26,7 @@ const HeroSection = () => {
   const ctaOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
   const ctaY = useTransform(scrollYProgress, [0, 0.3], [0, 40]);
   const statsBlur = useTransform(scrollYProgress, [0, 0.3], [0, 10]);
+  const statsFilter = useTransform(statsBlur, v => `blur(${v}px)`);
   const rightContentX = useTransform(scrollYProgress, [0, 0.4], [0, 60]);
   const rightContentOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
