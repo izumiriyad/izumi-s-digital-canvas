@@ -143,7 +143,7 @@ const HeroSection = () => {
               <AnimatedCounter value="50+" label="Companies Secured" duration={1.8} />
               <AnimatedCounter value="5+" label="Years Experience" duration={1.5} />
             </div>
-          </div>
+            </motion.div>
 
           {/* Right Content - Profile Photo & Terminal */}
           <div className="flex flex-col items-center lg:items-end gap-8">
