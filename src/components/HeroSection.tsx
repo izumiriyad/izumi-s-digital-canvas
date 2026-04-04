@@ -142,8 +142,8 @@ const HeroSection = () => {
               <AnimatedCounter value="500+" label="Vulnerabilities Found" duration={2} />
               <AnimatedCounter value="50+" label="Companies Secured" duration={1.8} />
               <AnimatedCounter value="5+" label="Years Experience" duration={1.5} />
-            </div>
             </motion.div>
+          </div>
 
           {/* Right Content - Profile Photo & Terminal */}
           <motion.div
