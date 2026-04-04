@@ -40,6 +40,7 @@ const Index = () => {
       {!isLoading && (
         <div className="relative min-h-screen">
           {/* Background Effects */}
+          <CustomCursor />
           <MatrixRain />
           <div className="grid-overlay" />
 
