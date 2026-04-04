@@ -18,6 +18,17 @@ const HeroSection = () => {
   const glowY1 = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const glowY2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
+  // Scroll-linked text animations
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
+  const textScale = useTransform(scrollYProgress, [0, 0.4], [1, 0.9]);
+  const subtitleX = useTransform(scrollYProgress, [0, 0.35], [0, -60]);
+  const ctaOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0, 0.3], [0, 40]);
+  const statsBlur = useTransform(scrollYProgress, [0, 0.3], [0, 10]);
+  const rightContentX = useTransform(scrollYProgress, [0, 0.4], [0, 60]);
+  const rightContentOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
