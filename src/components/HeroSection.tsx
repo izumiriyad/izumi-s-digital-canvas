@@ -112,6 +112,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
+              style={{ opacity: ctaOpacity, y: ctaY }}
               className="flex flex-wrap gap-4 justify-center lg:justify-start"
             >
               <Button
