@@ -1,14 +1,63 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 interface LoadingScreenProps {
   onComplete: () => void;
 }
 
+const useTypingSound = () => {
+  const audioCtxRef = useRef<AudioContext | null>(null);
+
+  const playBeep = useCallback((type: 'tick' | 'message' | 'done' = 'tick') => {
+    try {
+      if (!audioCtxRef.current) {
+        audioCtxRef.current = new AudioContext();
+      }
+      const ctx = audioCtxRef.current;
+      const oscillator = ctx.createOscillator();
+      const gain = ctx.createGain();
+      oscillator.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'tick') {
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(800 + Math.random() * 400, ctx.currentTime);
+        gain.gain.setValueAtTime(0.03, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.05);
+      } else if (type === 'message') {
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(1200, ctx.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.15);
+      } else {
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(600, ctx.currentTime);
+        oscillator.frequency.setValueAtTime(900, ctx.currentTime + 0.1);
+        oscillator.frequency.setValueAtTime(1200, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.4);
+      }
+    } catch {
+      // Audio not supported
+    }
+  }, []);
+
+  return playBeep;
+};
+
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
   const [text, setText] = useState('Initializing Security Framework...');
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playBeep = useTypingSound();
+  const prevTextRef = useRef(text);
 
   // Matrix rain effect
   useEffect(() => {
@@ -70,16 +119,24 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         const next = prev + Math.random() * 15 + 5;
         if (next >= 100) {
           clearInterval(interval);
+          playBeep('done');
           setTimeout(onComplete, 800);
           return 100;
         }
-        setText(messages[Math.floor((next / 100) * messages.length)]);
+        const newMsg = messages[Math.floor((next / 100) * messages.length)];
+        if (newMsg !== prevTextRef.current) {
+          prevTextRef.current = newMsg;
+          setText(newMsg);
+          playBeep('message');
+        } else {
+          playBeep('tick');
+        }
         return next;
       });
     }, 200);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, [onComplete, playBeep]);
 
   return (
     <AnimatePresence>
