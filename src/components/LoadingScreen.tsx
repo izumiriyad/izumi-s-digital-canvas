@@ -119,16 +119,24 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         const next = prev + Math.random() * 15 + 5;
         if (next >= 100) {
           clearInterval(interval);
+          playBeep('done');
           setTimeout(onComplete, 800);
           return 100;
         }
-        setText(messages[Math.floor((next / 100) * messages.length)]);
+        const newMsg = messages[Math.floor((next / 100) * messages.length)];
+        if (newMsg !== prevTextRef.current) {
+          prevTextRef.current = newMsg;
+          setText(newMsg);
+          playBeep('message');
+        } else {
+          playBeep('tick');
+        }
         return next;
       });
     }, 200);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, [onComplete, playBeep]);
 
   return (
     <AnimatePresence>
