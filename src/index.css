@@ -405,6 +405,63 @@
     animation: blink 1s infinite;
   }
   
+  /* Loading Glitch Effect */
+  .loading-glitch {
+    position: relative;
+    animation: loading-glitch-anim 2.5s infinite;
+  }
+
+  .loading-glitch::before,
+  .loading-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .loading-glitch::before {
+    color: hsl(var(--accent));
+    animation: loading-glitch-1 0.3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    opacity: 0.8;
+  }
+
+  .loading-glitch::after {
+    color: hsl(var(--destructive));
+    animation: loading-glitch-2 0.3s infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    opacity: 0.8;
+  }
+
+  @keyframes loading-glitch-anim {
+    0%, 90%, 100% { transform: none; }
+    92% { transform: skew(0.5deg); }
+    94% { transform: skew(-0.5deg); }
+    96% { transform: skew(0.3deg); }
+  }
+
+  @keyframes loading-glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-3px, 1px); }
+    40% { transform: translate(3px, -1px); }
+    60% { transform: translate(-1px, 2px); }
+    80% { transform: translate(2px, -1px); }
+  }
+
+  @keyframes loading-glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(3px, -1px); }
+    40% { transform: translate(-3px, 1px); }
+    60% { transform: translate(1px, -2px); }
+    80% { transform: translate(-2px, 1px); }
+  }
+
+  .loading-glitch-text {
+    animation: loading-glitch-anim 3s infinite;
+  }
+
   /* Matrix Rain Container */
   .matrix-rain {
     position: fixed;
