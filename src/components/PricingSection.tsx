@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
-import { Check, X, Shield, Zap, Crown, Mail, ExternalLink, Search, Users, Eye } from 'lucide-react';
+import { Check, X, Shield, Zap, Crown, Mail, ExternalLink, Search, Users, Eye, Smartphone, Cloud, AlertTriangle, Blocks } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PricingTier {
