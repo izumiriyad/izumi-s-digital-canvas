@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
-import { Check, X, Shield, Zap, Crown, Mail, ExternalLink, Search, Users, Eye } from 'lucide-react';
+import { Check, X, Shield, Zap, Crown, Mail, ExternalLink, Search, Users, Eye, Smartphone, Cloud, AlertTriangle, Blocks } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PricingTier {
@@ -136,8 +136,87 @@ const osintTiers: PricingTier[] = [
   },
 ];
 
-const comparisonFeatures = [
-  { feature: 'Web Application Testing', basic: true, full: true, retainer: true },
+const specializedTiers: PricingTier[] = [
+  {
+    name: 'Mobile App Security',
+    description: 'Comprehensive Android & iOS application security testing',
+    price: '$800',
+    priceNote: 'Starting price',
+    icon: Smartphone,
+    features: [
+      'Android & iOS app reverse engineering',
+      'API backend security review',
+      'Certificate pinning bypass testing',
+      'Local data storage analysis',
+      'Runtime manipulation & tampering',
+      'Authentication flow testing',
+      'Detailed report with POCs',
+      '7-10 day delivery',
+    ],
+    cta: 'Get Started',
+  },
+  {
+    name: 'Cloud Security Audit',
+    description: 'AWS, Azure & GCP misconfiguration and hardening review',
+    price: '$1,200',
+    priceNote: 'Starting price',
+    icon: Cloud,
+    features: [
+      'IAM policy & permissions audit',
+      'S3/Blob storage exposure analysis',
+      'Network security group review',
+      'Secrets management assessment',
+      'Kubernetes/container security',
+      'Infrastructure-as-Code review',
+      'Compliance mapping (SOC2, ISO)',
+      'Hardening roadmap & report',
+      '10-14 day delivery',
+    ],
+    highlighted: true,
+    cta: 'Most Requested',
+  },
+  {
+    name: 'Incident Response',
+    description: 'Emergency breach containment and forensic investigation',
+    price: '$2,500',
+    priceNote: 'per incident',
+    icon: AlertTriangle,
+    features: [
+      '4-hour initial response SLA',
+      'Breach scope & impact analysis',
+      'Malware & backdoor detection',
+      'Log analysis & timeline reconstruction',
+      'Evidence preservation & chain of custody',
+      'Containment & eradication support',
+      'Post-incident hardening plan',
+      'Executive incident report',
+      'Ongoing monitoring setup',
+    ],
+    cta: 'Emergency Contact',
+  },
+  {
+    name: 'Web3 & Smart Contract',
+    description: 'DeFi protocol review and smart contract security audit',
+    price: '$3,000',
+    priceNote: 'Starting price',
+    icon: Blocks,
+    features: [
+      'Solidity/Rust contract audit',
+      'Reentrancy & flash loan attack testing',
+      'Access control & privilege analysis',
+      'Oracle manipulation scenarios',
+      'Gas optimization review',
+      'DeFi protocol logic review',
+      'Formal verification recommendations',
+      'Audit report with severity ratings',
+      '14-21 day delivery',
+    ],
+    cta: 'Request Audit',
+  },
+];
+
+
+  const comparisonFeatures = [
   { feature: 'API Security Review', basic: 'Basic', full: 'Full', retainer: 'Continuous' },
   { feature: 'OWASP Top 10 Coverage', basic: true, full: true, retainer: true },
   { feature: 'Business Logic Testing', basic: false, full: true, retainer: true },
@@ -432,6 +511,89 @@ const PricingSection = () => {
                     {tier.cta}
                   </Button>
                 )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Specialized Services Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-32 text-center mb-16"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-gradient">Specialized Services</span>
+          </h3>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Advanced security services for modern infrastructure — from mobile apps to smart contracts.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
+        >
+          {specializedTiers.map((tier, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className={`relative group ${tier.highlighted ? '' : ''}`}
+            >
+              {tier.highlighted && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-mono z-10">
+                  IN DEMAND
+                </div>
+              )}
+
+              <div
+                className={`h-full p-6 rounded-xl border transition-all duration-300 ${
+                  tier.highlighted
+                    ? 'bg-card border-primary/50 shadow-[0_0_40px_rgba(0,255,136,0.15)]'
+                    : 'bg-card/50 border-border hover:border-primary/30'
+                }`}
+              >
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center mb-5 ${
+                    tier.highlighted
+                      ? 'bg-primary/20 text-primary'
+                      : 'bg-muted text-muted-foreground group-hover:text-primary group-hover:bg-primary/10'
+                  } transition-colors`}
+                >
+                  <tier.icon className="w-6 h-6" />
+                </div>
+
+                <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
+                <p className="text-muted-foreground text-xs mb-5">{tier.description}</p>
+
+                <div className="mb-5">
+                  <span className="text-3xl font-bold text-primary">{tier.price}</span>
+                  <span className="text-muted-foreground text-xs ml-2">{tier.priceNote}</span>
+                </div>
+
+                <ul className="space-y-2.5 mb-6">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs">
+                      <Check className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  onClick={handleContact}
+                  variant={tier.highlighted ? 'neon' : 'neon-outline'}
+                  className="w-full"
+                  size="sm"
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  {tier.cta}
+                </Button>
               </div>
             </motion.div>
           ))}
