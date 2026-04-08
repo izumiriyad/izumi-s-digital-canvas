@@ -516,6 +516,89 @@ const PricingSection = () => {
           ))}
         </motion.div>
 
+        {/* Specialized Services Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-32 text-center mb-16"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-gradient">Specialized Services</span>
+          </h3>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Advanced security services for modern infrastructure — from mobile apps to smart contracts.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
+        >
+          {specializedTiers.map((tier, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className={`relative group ${tier.highlighted ? '' : ''}`}
+            >
+              {tier.highlighted && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-mono z-10">
+                  IN DEMAND
+                </div>
+              )}
+
+              <div
+                className={`h-full p-6 rounded-xl border transition-all duration-300 ${
+                  tier.highlighted
+                    ? 'bg-card border-primary/50 shadow-[0_0_40px_rgba(0,255,136,0.15)]'
+                    : 'bg-card/50 border-border hover:border-primary/30'
+                }`}
+              >
+                <div
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center mb-5 ${
+                    tier.highlighted
+                      ? 'bg-primary/20 text-primary'
+                      : 'bg-muted text-muted-foreground group-hover:text-primary group-hover:bg-primary/10'
+                  } transition-colors`}
+                >
+                  <tier.icon className="w-6 h-6" />
+                </div>
+
+                <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
+                <p className="text-muted-foreground text-xs mb-5">{tier.description}</p>
+
+                <div className="mb-5">
+                  <span className="text-3xl font-bold text-primary">{tier.price}</span>
+                  <span className="text-muted-foreground text-xs ml-2">{tier.priceNote}</span>
+                </div>
+
+                <ul className="space-y-2.5 mb-6">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs">
+                      <Check className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  onClick={handleContact}
+                  variant={tier.highlighted ? 'neon' : 'neon-outline'}
+                  className="w-full"
+                  size="sm"
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  {tier.cta}
+                </Button>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* Enterprise Note */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
