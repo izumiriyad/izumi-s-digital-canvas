@@ -20,6 +20,7 @@ import PricingSection from '@/components/PricingSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import SectionTransition from '@/components/SectionTransition';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,17 +55,39 @@ const Index = () => {
           {/* Main Sections */}
           <main>
             <HeroSection />
-            <ProjectsSection />
-            <BlogSection />
-            <TestimonialsSection />
-            <AboutSection />
-            <ClientLogosSection />
-            <SkillsSection />
-            <CertificationsSection />
-            <ResumeSection />
-            <PricingSection />
-            <FAQSection />
-            <ContactSection />
+            <SectionTransition style="slide-up">
+              <ProjectsSection />
+            </SectionTransition>
+            <SectionTransition style="slide-left" delay={0.1}>
+              <BlogSection />
+            </SectionTransition>
+            <SectionTransition style="zoom">
+              <TestimonialsSection />
+            </SectionTransition>
+            <SectionTransition style="slide-right" delay={0.1}>
+              <AboutSection />
+            </SectionTransition>
+            <SectionTransition style="flip">
+              <ClientLogosSection />
+            </SectionTransition>
+            <SectionTransition style="curtain">
+              <SkillsSection />
+            </SectionTransition>
+            <SectionTransition style="slide-left">
+              <CertificationsSection />
+            </SectionTransition>
+            <SectionTransition style="zoom" delay={0.1}>
+              <ResumeSection />
+            </SectionTransition>
+            <SectionTransition style="flip">
+              <PricingSection />
+            </SectionTransition>
+            <SectionTransition style="slide-up">
+              <FAQSection />
+            </SectionTransition>
+            <SectionTransition style="curtain">
+              <ContactSection />
+            </SectionTransition>
           </main>
 
           {/* Footer */}
