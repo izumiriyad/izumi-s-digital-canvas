@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
-import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart } from 'lucide-react';
+import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart, ArrowUpRight } from 'lucide-react';
 
 // Project images
 import ultraApiImage from '@/assets/projects/ultra-api-scanner.png';
