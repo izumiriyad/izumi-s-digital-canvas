@@ -216,7 +216,7 @@ const specializedTiers: PricingTier[] = [
 ];
 
 
-  { feature: 'Web Application Testing', basic: true, full: true, retainer: true },
+  const comparisonFeatures = [
   { feature: 'API Security Review', basic: 'Basic', full: 'Full', retainer: 'Continuous' },
   { feature: 'OWASP Top 10 Coverage', basic: true, full: true, retainer: true },
   { feature: 'Business Logic Testing', basic: false, full: true, retainer: true },
