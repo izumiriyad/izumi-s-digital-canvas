@@ -20,6 +20,7 @@ import PricingSection from '@/components/PricingSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import SectionTransition from '@/components/SectionTransition';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
