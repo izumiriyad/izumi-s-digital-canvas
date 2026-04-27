@@ -74,6 +74,15 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
       return;
     }
 
+    if (!captchaToken) {
+      toast({
+        title: 'Verification required',
+        description: 'Please wait a moment for the spam check to complete, then try again.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const response = await fetch('https://formspree.io/f/xeokbqbq', {
@@ -82,6 +91,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
         body: JSON.stringify({
           _subject: `Tailored Assessment Request — ${parsed.data.industry}`,
           source: 'Tailored Assessment CTA',
+          'cf-turnstile-response': captchaToken,
           ...parsed.data,
         }),
       });
@@ -94,6 +104,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
         description: `I'll get back to you with a tailored ${parsed.data.industry} scope within 24h.`,
       });
       setForm({ name: '', email: '', company: '', industry: defaultIndustry, scope: scopes[0], notes: '' });
+      setCaptchaToken('');
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch {
       toast({
