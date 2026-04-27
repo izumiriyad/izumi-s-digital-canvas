@@ -17,6 +17,7 @@ import SkillsSection from '@/components/SkillsSection';
 import CertificationsSection from '@/components/CertificationsSection';
 import ResumeSection from '@/components/ResumeSection';
 import PricingSection from '@/components/PricingSection';
+import ProcessSection from '@/components/ProcessSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -78,6 +79,9 @@ const Index = () => {
             </SectionTransition>
             <SectionTransition style="zoom" delay={0.1}>
               <ResumeSection />
+            </SectionTransition>
+            <SectionTransition style="slide-right">
+              <ProcessSection />
             </SectionTransition>
             <SectionTransition style="flip">
               <PricingSection />
