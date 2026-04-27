@@ -50,6 +50,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string>('');
   const [form, setForm] = useState({
     name: '',
     email: '',
