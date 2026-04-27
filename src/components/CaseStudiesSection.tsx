@@ -146,10 +146,20 @@ const caseStudies = [
   },
 ];
 
-const CaseStudiesSection = () => {
+interface CaseStudiesSectionProps {
+  onIndustryChange?: (industry: string) => void;
+}
+
+const CaseStudiesSection = ({ onIndustryChange }: CaseStudiesSectionProps = {}) => {
   const [activeId, setActiveId] = useState(caseStudies[0].id);
   const active = caseStudies.find((c) => c.id === activeId)!;
   const ActiveIcon = active.icon;
+
+  const handleSelect = (id: string) => {
+    setActiveId(id);
+    const c = caseStudies.find((x) => x.id === id);
+    if (c) onIndustryChange?.(c.industry);
+  };
 
   return (
     <section id="case-studies" className="py-24 px-4 relative overflow-hidden">
