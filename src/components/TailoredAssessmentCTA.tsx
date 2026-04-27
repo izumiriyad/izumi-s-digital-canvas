@@ -5,6 +5,13 @@ import { Loader2, CheckCircle2, Send, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import SectionTitle from './SectionTitle';
+import TurnstileWidget from './TurnstileWidget';
+
+// Cloudflare Turnstile site key. Falls back to Cloudflare's official always-passing
+// test key so the widget works in dev/preview. Set VITE_TURNSTILE_SITE_KEY in
+// production to your real site key.
+const TURNSTILE_SITE_KEY =
+  import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
 const industries = [
   'FinTech',
