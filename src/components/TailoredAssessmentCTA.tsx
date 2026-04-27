@@ -235,11 +235,24 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
               </p>
             </div>
 
+            <div className="md:col-span-2">
+              <TurnstileWidget
+                siteKey={TURNSTILE_SITE_KEY}
+                onVerify={(token) => setCaptchaToken(token)}
+                onExpire={() => setCaptchaToken('')}
+                onError={() => setCaptchaToken('')}
+                theme="dark"
+              />
+              <p className="text-xs text-muted-foreground mt-2 font-mono">
+                Protected by Cloudflare Turnstile — invisible spam check.
+              </p>
+            </div>
+
             <div className="md:col-span-2 flex justify-end">
               <Button
                 type="submit"
                 size="lg"
-                disabled={isSubmitting || isSubmitted}
+                disabled={isSubmitting || isSubmitted || !captchaToken}
                 className="min-w-[220px]"
               >
                 {isSubmitting ? (
