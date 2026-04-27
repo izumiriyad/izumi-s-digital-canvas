@@ -19,6 +19,7 @@ import ResumeSection from '@/components/ResumeSection';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
+import TailoredAssessmentCTA from '@/components/TailoredAssessmentCTA';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -26,6 +27,7 @@ import SectionTransition from '@/components/SectionTransition';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedIndustry, setSelectedIndustry] = useState('FinTech');
 
   useEffect(() => {
     // Preload hero background image
@@ -85,7 +87,10 @@ const Index = () => {
               <ProcessSection />
             </SectionTransition>
             <SectionTransition style="zoom">
-              <CaseStudiesSection />
+              <CaseStudiesSection onIndustryChange={setSelectedIndustry} />
+            </SectionTransition>
+            <SectionTransition style="slide-up">
+              <TailoredAssessmentCTA defaultIndustry={selectedIndustry} />
             </SectionTransition>
             <SectionTransition style="flip">
               <PricingSection />

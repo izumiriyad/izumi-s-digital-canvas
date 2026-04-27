@@ -178,7 +178,7 @@ const CaseStudiesSection = ({ onIndustryChange }: CaseStudiesSectionProps = {}) 
             return (
               <button
                 key={c.id}
-                onClick={() => setActiveId(c.id)}
+                onClick={() => handleSelect(c.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full border font-mono text-sm transition-all ${
                   isActive
                     ? 'border-primary bg-primary/10 text-primary'
