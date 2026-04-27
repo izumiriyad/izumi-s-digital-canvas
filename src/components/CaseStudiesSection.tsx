@@ -146,10 +146,20 @@ const caseStudies = [
   },
 ];
 
-const CaseStudiesSection = () => {
+interface CaseStudiesSectionProps {
+  onIndustryChange?: (industry: string) => void;
+}
+
+const CaseStudiesSection = ({ onIndustryChange }: CaseStudiesSectionProps = {}) => {
   const [activeId, setActiveId] = useState(caseStudies[0].id);
   const active = caseStudies.find((c) => c.id === activeId)!;
   const ActiveIcon = active.icon;
+
+  const handleSelect = (id: string) => {
+    setActiveId(id);
+    const c = caseStudies.find((x) => x.id === id);
+    if (c) onIndustryChange?.(c.industry);
+  };
 
   return (
     <section id="case-studies" className="py-24 px-4 relative overflow-hidden">
@@ -168,7 +178,7 @@ const CaseStudiesSection = () => {
             return (
               <button
                 key={c.id}
-                onClick={() => setActiveId(c.id)}
+                onClick={() => handleSelect(c.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full border font-mono text-sm transition-all ${
                   isActive
                     ? 'border-primary bg-primary/10 text-primary'
