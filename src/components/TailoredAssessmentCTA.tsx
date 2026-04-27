@@ -5,6 +5,13 @@ import { Loader2, CheckCircle2, Send, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import SectionTitle from './SectionTitle';
+import TurnstileWidget from './TurnstileWidget';
+
+// Cloudflare Turnstile site key. Falls back to Cloudflare's official always-passing
+// test key so the widget works in dev/preview. Set VITE_TURNSTILE_SITE_KEY in
+// production to your real site key.
+const TURNSTILE_SITE_KEY =
+  import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 
 const industries = [
   'FinTech',
@@ -43,6 +50,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string>('');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -66,6 +74,15 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
       return;
     }
 
+    if (!captchaToken) {
+      toast({
+        title: 'Verification required',
+        description: 'Please wait a moment for the spam check to complete, then try again.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const response = await fetch('https://formspree.io/f/xeokbqbq', {
@@ -74,6 +91,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
         body: JSON.stringify({
           _subject: `Tailored Assessment Request — ${parsed.data.industry}`,
           source: 'Tailored Assessment CTA',
+          'cf-turnstile-response': captchaToken,
           ...parsed.data,
         }),
       });
@@ -86,6 +104,7 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
         description: `I'll get back to you with a tailored ${parsed.data.industry} scope within 24h.`,
       });
       setForm({ name: '', email: '', company: '', industry: defaultIndustry, scope: scopes[0], notes: '' });
+      setCaptchaToken('');
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch {
       toast({
@@ -216,11 +235,24 @@ const TailoredAssessmentCTA = ({ defaultIndustry = 'FinTech' }: Props) => {
               </p>
             </div>
 
+            <div className="md:col-span-2">
+              <TurnstileWidget
+                siteKey={TURNSTILE_SITE_KEY}
+                onVerify={(token) => setCaptchaToken(token)}
+                onExpire={() => setCaptchaToken('')}
+                onError={() => setCaptchaToken('')}
+                theme="dark"
+              />
+              <p className="text-xs text-muted-foreground mt-2 font-mono">
+                Protected by Cloudflare Turnstile — invisible spam check.
+              </p>
+            </div>
+
             <div className="md:col-span-2 flex justify-end">
               <Button
                 type="submit"
                 size="lg"
-                disabled={isSubmitting || isSubmitted}
+                disabled={isSubmitting || isSubmitted || !captchaToken}
                 className="min-w-[220px]"
               >
                 {isSubmitting ? (
