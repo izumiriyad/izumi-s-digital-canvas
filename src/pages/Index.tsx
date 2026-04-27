@@ -18,6 +18,7 @@ import CertificationsSection from '@/components/CertificationsSection';
 import ResumeSection from '@/components/ResumeSection';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
+import CaseStudiesSection from '@/components/CaseStudiesSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -82,6 +83,9 @@ const Index = () => {
             </SectionTransition>
             <SectionTransition style="slide-right">
               <ProcessSection />
+            </SectionTransition>
+            <SectionTransition style="zoom">
+              <CaseStudiesSection />
             </SectionTransition>
             <SectionTransition style="flip">
               <PricingSection />
