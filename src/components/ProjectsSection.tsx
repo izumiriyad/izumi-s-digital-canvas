@@ -179,9 +179,11 @@ const ProjectsSection = () => {
                 <div className="text-xs font-mono text-accent uppercase tracking-wider mb-2 group-hover:tracking-[0.2em] transition-all duration-500">
                   {project.type}
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
+                <Link to={`/projects/${project.slug}`} className="block">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                </Link>
                 <p className="text-muted-foreground text-sm mb-4 line-clamp-3 group-hover:text-muted-foreground/80 transition-colors">
                   {project.description}
                 </p>
