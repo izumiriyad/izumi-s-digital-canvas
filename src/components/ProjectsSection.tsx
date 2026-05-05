@@ -204,7 +204,17 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Links with hover underline */}
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="relative flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors duration-300 group/link font-medium"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span className="relative">
+                      View Case Study
+                      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
+                    </span>
+                  </Link>
                   {project.links.map((link, i) => (
                     <motion.button
                       key={i}
