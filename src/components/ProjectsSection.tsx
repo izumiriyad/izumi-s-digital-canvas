@@ -1,16 +1,57 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
-import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Mail, Play, Download, BookOpen, BarChart, ArrowUpRight, FileText } from 'lucide-react';
+import { projects as projectData } from '@/data/projects';
 
-// Project images
-import ultraApiImage from '@/assets/projects/ultra-api-scanner.png';
-import phantomReconImage from '@/assets/projects/phantom-backend.png';
-import bkashGatewayImage from '@/assets/projects/bkash-gateway.png';
-import uaeCryptoImage from '@/assets/projects/uae-crypto-osint.png';
-import linkedinBotImage from '@/assets/projects/linkedin-bot.png';
-import bugBountyProImage from '@/assets/projects/bug-bounty-pro.png';
+const linkIcons: Record<string, typeof ExternalLink> = {
+  ExternalLink, Mail, Play, Download, BookOpen, BarChart,
+};
+
+const projectExtras: Record<string, { links: { label: string; icon: typeof ExternalLink; href: string }[] }> = {
+  'ultraapi-framework': {
+    links: [
+      { label: 'View Details', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Request Access', icon: Mail, href: '#contact' },
+    ],
+  },
+  'phantom-recon-system': {
+    links: [
+      { label: 'Demo Results', icon: BarChart, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Get Tool', icon: Download, href: '#contact' },
+    ],
+  },
+  'payment-gateway-security-suite': {
+    links: [
+      { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Documentation', icon: BookOpen, href: '#contact' },
+    ],
+  },
+  'uae-crypto-osint-dashboard': {
+    links: [
+      { label: 'Watch Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Request Access', icon: Mail, href: '#contact' },
+    ],
+  },
+  'linkedin-automation-bot': {
+    links: [
+      { label: 'Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
+      { label: 'Request Access', icon: Mail, href: '#contact' },
+    ],
+  },
+  'bug-bounty-pro-toolkit': {
+    links: [
+      { label: 'Case Study', icon: BookOpen, href: '#contact' },
+    ],
+  },
+};
+
+const projects = projectData.map((p) => ({
+  ...p,
+  links: projectExtras[p.slug]?.links ?? [],
+}));
+
 
 const projects = [
   {
