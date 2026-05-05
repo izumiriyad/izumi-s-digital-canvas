@@ -1,93 +1,57 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ParallaxSection from './ParallaxSection';
 import SectionTitle from './SectionTitle';
-import { ExternalLink, Mail, Play, Download, Code, BookOpen, BarChart, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Mail, Play, Download, BookOpen, BarChart, ArrowUpRight, FileText } from 'lucide-react';
+import { projects as projectData } from '@/data/projects';
 
-// Project images
-import ultraApiImage from '@/assets/projects/ultra-api-scanner.png';
-import phantomReconImage from '@/assets/projects/phantom-backend.png';
-import bkashGatewayImage from '@/assets/projects/bkash-gateway.png';
-import uaeCryptoImage from '@/assets/projects/uae-crypto-osint.png';
-import linkedinBotImage from '@/assets/projects/linkedin-bot.png';
-import bugBountyProImage from '@/assets/projects/bug-bounty-pro.png';
+const linkIcons: Record<string, typeof ExternalLink> = {
+  ExternalLink, Mail, Play, Download, BookOpen, BarChart,
+};
 
-const projects = [
-  {
-    title: 'UltraAPI Framework',
-    type: 'API Security Testing Framework',
-    description:
-      'Advanced API security testing framework with automated endpoint enumeration, JWT/OAuth token misconfiguration detection, BOLA/IDOR scanner, rate-limit bypass automation, and mass assignment vulnerability detector. Adopted by 5+ security teams.',
-    tech: ['Node.js', 'Python', 'Bash', 'REST', 'GraphQL'],
+const projectExtras: Record<string, { links: { label: string; icon: typeof ExternalLink; href: string }[] }> = {
+  'ultraapi-framework': {
     links: [
       { label: 'View Details', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
-    featured: true,
-    highlight: '70% Time Reduction',
-    image: ultraApiImage,
   },
-  {
-    title: 'Phantom Recon System',
-    type: 'Attack Surface Mapping',
-    description:
-      'Comprehensive attack surface discovery integrating Amass, Subfinder, nuclei with automated subdomain takeover detection, technology fingerprinting, and continuous monitoring. Reduced recon time from 6+ hours to 15 minutes.',
-    tech: ['Python', 'Bash', 'OSINT', 'Nuclei', 'Amass'],
+  'phantom-recon-system': {
     links: [
       { label: 'Demo Results', icon: BarChart, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Get Tool', icon: Download, href: '#contact' },
     ],
-    highlight: '500+ Subdomains Found',
-    image: phantomReconImage,
   },
-  {
-    title: 'Payment Gateway Security Suite',
-    type: 'Security Training Platform',
-    description:
-      'Complete payment workflow simulation for security training with OTP/PIN verification testing, race condition scenarios, TOCTOU attacks, replay attack testing, and webhook exploitation. Used by security teams for training.',
-    tech: ['Node.js', 'React', 'Express', 'MongoDB', 'Redis'],
+  'payment-gateway-security-suite': {
     links: [
       { label: 'Live Demo', icon: ExternalLink, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Documentation', icon: BookOpen, href: '#contact' },
     ],
-    image: bkashGatewayImage,
   },
-  {
-    title: 'UAE Crypto OSINT Dashboard',
-    type: 'Breach Intelligence Platform',
-    description:
-      'Real-time breach intelligence monitoring platform that analyzes breach dump patterns and wallet correlations. Features dashboard visualization, breach paste correlation, and automated report generation for crypto-related security incidents.',
-    tech: ['React', 'Python', 'OSINT', 'Data Analysis'],
+  'uae-crypto-osint-dashboard': {
     links: [
       { label: 'Watch Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
-    image: uaeCryptoImage,
   },
-  {
-    title: 'LinkedIn Automation Bot',
-    type: 'Security-Focused Automation',
-    description:
-      'Browser automation demonstrating security implications with multi-step form automation, anti-detection flow, human-like behavior simulation, captcha handling, and session management. Used in red team engagements.',
-    tech: ['Puppeteer', 'Node.js', 'Anti-Detection'],
+  'linkedin-automation-bot': {
     links: [
       { label: 'Demo', icon: Play, href: 'https://www.linkedin.com/in/zeroizumi/recent-activity/all/' },
       { label: 'Request Access', icon: Mail, href: '#contact' },
     ],
-    image: linkedinBotImage,
   },
-  {
-    title: 'Bug Bounty Pro Toolkit',
-    type: 'Security Testing Arsenal',
-    description:
-      'Comprehensive collection of custom security scripts including privilege escalation, auth bypass, deep reconnaissance, backend cloud analysis, and network harvesting tools. A complete toolkit for professional bug bounty hunters.',
-    tech: ['Bash', 'Python', 'Shell', 'Security'],
+  'bug-bounty-pro-toolkit': {
     links: [
       { label: 'Case Study', icon: BookOpen, href: '#contact' },
     ],
-    image: bugBountyProImage,
   },
-];
+};
+
+const projects = projectData.map((p) => ({
+  ...p,
+  links: projectExtras[p.slug]?.links ?? [],
+}));
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -215,9 +179,11 @@ const ProjectsSection = () => {
                 <div className="text-xs font-mono text-accent uppercase tracking-wider mb-2 group-hover:tracking-[0.2em] transition-all duration-500">
                   {project.type}
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
+                <Link to={`/projects/${project.slug}`} className="block">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                </Link>
                 <p className="text-muted-foreground text-sm mb-4 line-clamp-3 group-hover:text-muted-foreground/80 transition-colors">
                   {project.description}
                 </p>
@@ -238,7 +204,17 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Links with hover underline */}
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="relative flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors duration-300 group/link font-medium"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span className="relative">
+                      View Case Study
+                      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
+                    </span>
+                  </Link>
                   {project.links.map((link, i) => (
                     <motion.button
                       key={i}
