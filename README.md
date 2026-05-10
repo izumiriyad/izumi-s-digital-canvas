@@ -2,7 +2,7 @@
 
 A modern, cyberpunk-themed portfolio website showcasing offensive security expertise, projects, and professional experience. Built with React, TypeScript, and Tailwind CSS.
 
-**Live Site:** [https://izumi-s-digital-portfoliocanvas.vercel.app/](https://izumi-s-digital-portfoliocanvas.vercel.app/)
+**Live Site:** [https://izumiriyad.vercel.app/](https://izumiriyad.vercel.app/)
 
 ---
 
