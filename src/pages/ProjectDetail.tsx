@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import BackToTop from '@/components/BackToTop';
 import ParallaxSection from '@/components/ParallaxSection';
+import ScreenshotGallery from '@/components/ScreenshotGallery';
+import { Images } from 'lucide-react';
 import { getProjectBySlug, projects } from '@/data/projects';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -79,6 +81,18 @@ const ProjectDetail = () => {
               className="w-full h-auto object-cover"
             />
           </motion.div>
+        </section>
+
+        {/* Screenshot gallery */}
+        <section className="container mx-auto px-6 max-w-6xl py-8">
+          <div className="flex items-center gap-3 mb-8">
+            <Images className="w-5 h-5 text-primary" />
+            <h2 className="text-2xl md:text-3xl font-bold">Screenshots</h2>
+            <span className="ml-auto text-xs font-mono text-muted-foreground">
+              {project.screenshots.length} {project.screenshots.length === 1 ? 'image' : 'images'} · click to expand
+            </span>
+          </div>
+          <ScreenshotGallery screenshots={project.screenshots} title={project.title} />
         </section>
 
         {/* Impact metrics */}
