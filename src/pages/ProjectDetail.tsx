@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import BackToTop from '@/components/BackToTop';
 import ParallaxSection from '@/components/ParallaxSection';
+import ScreenshotGallery from '@/components/ScreenshotGallery';
+import { Images } from 'lucide-react';
 import { getProjectBySlug, projects } from '@/data/projects';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
