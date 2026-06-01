@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Clock, Target, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, Target, Sparkles, ArrowRight, FileText, Workflow } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import BackToTop from '@/components/BackToTop';
 import ParallaxSection from '@/components/ParallaxSection';
 import ScreenshotGallery from '@/components/ScreenshotGallery';
+import MethodologySection from '@/components/MethodologySection';
+import SecurityPostureChart from '@/components/SecurityPostureChart';
+import SEO from '@/components/SEO';
 import { Images } from 'lucide-react';
 import { getProjectBySlug, projects } from '@/data/projects';
 import { Badge } from '@/components/ui/badge';
@@ -30,6 +33,21 @@ const ProjectDetail = () => {
 
   return (
     <div className="relative min-h-screen bg-background">
+      <SEO
+        title={`${project.title} — Case Study`}
+        description={project.description.length > 155 ? project.description.slice(0, 152) + '…' : project.description}
+        canonical={`/projects/${project.slug}`}
+        type="article"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: project.title,
+          description: project.description,
+          author: { '@type': 'Person', name: 'Aftab Ahomod Riyad' },
+          about: project.type,
+          keywords: project.tech.join(', '),
+        }}
+      />
       <ScrollProgress />
       <Navbar />
       <BackToTop />
