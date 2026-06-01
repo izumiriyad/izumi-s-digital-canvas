@@ -1,0 +1,17 @@
+{
+  "name": "Aftab Ahomod (Riyad) — Security Researcher",
+  "short_name": "izumi_",
+  "description": "Portfolio of Aftab Ahomod — offensive security engineer & automation architect.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/qXzZbnS34EQBkGv0PHIfLHqiikq2/uploads/1767821238163-logo-white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Command as CommandIcon } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
+import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
   { href: '#home', label: 'Home' },
   { href: '#projects', label: 'Projects' },
   { href: '#blog', label: 'Blog' },
-  { href: '#testimonials', label: 'Testimonials' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
-  { href: '#resume', label: 'Resume' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
@@ -21,12 +20,13 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-
-      // Update active section based on scroll position
+      if (!isHome) return;
       const sections = navItems.map(item => item.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -39,15 +39,26 @@ const Navbar = () => {
         }
       }
     };
-
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
 
   const handleClick = (href: string) => {
     setIsMobileMenuOpen(false);
+    if (!isHome) {
+      window.location.href = '/' + href;
+      return;
+    }
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openPalette = () => {
+    setIsMobileMenuOpen(false);
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'k', metaKey: true })
+    );
   };
 
   return (
@@ -104,9 +115,29 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li>
+              <Link
+                to="/cve"
+                className={`relative font-medium transition-colors duration-300 ${
+                  location.pathname === '/cve' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                CVEs
+              </Link>
+            </li>
           </ul>
 
           <div className="flex items-center gap-2">
+            {/* Command palette trigger */}
+            <button
+              onClick={openPalette}
+              className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-border text-xs font-mono text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+              aria-label="Open command palette"
+              title="Open command palette (⌘K)"
+            >
+              <CommandIcon className="w-3 h-3" /> K
+            </button>
+
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
@@ -132,6 +163,8 @@ const Navbar = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden text-foreground p-2"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -167,6 +200,15 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/cve"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-2 font-medium text-muted-foreground"
+                >
+                  CVEs
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}
