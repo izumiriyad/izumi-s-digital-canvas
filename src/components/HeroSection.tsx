@@ -7,6 +7,7 @@ import AnimatedCounter from './AnimatedCounter';
 import TypingEffect from './TypingEffect';
 import heroBg from '@/assets/hero-bg.jpg';
 import profilePhoto from '@/assets/izumi-profile.jpg';
+import AvailabilityBadge from './AvailabilityBadge';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -67,6 +68,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
+            <AvailabilityBadge />
             {/* Subtitle */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

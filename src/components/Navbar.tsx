@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Command as CommandIcon } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
+import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
   { href: '#home', label: 'Home' },
   { href: '#projects', label: 'Projects' },
   { href: '#blog', label: 'Blog' },
-  { href: '#testimonials', label: 'Testimonials' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
-  { href: '#resume', label: 'Resume' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
