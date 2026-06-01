@@ -211,9 +211,52 @@ const ProjectDetail = () => {
           </div>
         </section>
 
+        {/* Methodology */}
+        <section className="container mx-auto px-6 max-w-6xl py-16">
+          <div className="flex items-center gap-3 mb-8">
+            <Workflow className="w-5 h-5 text-primary" />
+            <h2 className="text-2xl md:text-3xl font-bold">Methodology</h2>
+            <span className="ml-auto text-xs font-mono text-muted-foreground hidden md:inline">
+              PTES · OWASP WSTG · MITRE ATT&amp;CK
+            </span>
+          </div>
+          <MethodologySection />
+        </section>
+
+        {/* Security posture before vs after */}
+        <ParallaxSection variant="dots" glowColor="accent">
+          <section className="container mx-auto px-6 max-w-6xl py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <Sparkles className="w-5 h-5 text-accent" />
+              <h2 className="text-2xl md:text-3xl font-bold">Posture Improvement</h2>
+            </div>
+            <SecurityPostureChart />
+          </section>
+        </ParallaxSection>
+
         {/* Outcomes */}
         <section className="container mx-auto px-6 max-w-6xl py-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">Outcomes</h2>
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">Outcomes</h2>
+            <Button
+              variant="outline"
+              onClick={() => {
+                const blob = new Blob(
+                  [`REDACTED SAMPLE REPORT\n\nEngagement: ${project.title}\nType: ${project.type}\n\nThis is a placeholder. Real sample reports available on request under NDA.\n\nContact: aftabahomodriyad@gmail.com\n`],
+                  { type: 'text/plain' }
+                );
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${project.slug}-sample-report.txt`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+            >
+              <FileText className="w-4 h-4 mr-2" />
+              Download sample report
+            </Button>
+          </div>
           <ul className="space-y-4">
             {project.outcomes.map((o) => (
               <li
