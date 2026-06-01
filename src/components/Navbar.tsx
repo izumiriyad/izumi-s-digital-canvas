@@ -200,6 +200,15 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/cve"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-2 font-medium text-muted-foreground"
+                >
+                  CVEs
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}
