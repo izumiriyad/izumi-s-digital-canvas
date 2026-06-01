@@ -40,6 +40,32 @@ const Index = () => {
 
   return (
     <>
+      <SEO
+        title="Aftab Ahomod Riyad — Offensive Security Engineer"
+        description="Penetration testing, API security, OSINT and offensive automation. 500+ vulnerabilities disclosed across 50+ companies."
+        canonical="/"
+        type="profile"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Aftab Ahomod Riyad',
+            jobTitle: 'Offensive Security Engineer',
+            url: '/',
+            sameAs: [
+              'https://www.linkedin.com/in/zeroizumi/',
+              'https://www.upwork.com/freelancers/~012d71f9fb100a123f',
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'Aftab Ahomod Riyad — Security Consulting',
+            areaServed: 'Worldwide',
+            serviceType: ['Penetration Testing', 'API Security', 'OSINT', 'Security Automation'],
+          },
+        ]}
+      />
       {/* Loading Screen */}
       <AnimatePresence>
         {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
@@ -58,10 +84,12 @@ const Index = () => {
           <Navbar />
           <FloatingHireButton />
           <BackToTop />
+          <SocialProofToast />
 
           {/* Main Sections */}
           <main>
             <HeroSection />
+            <TrustBar />
             <SectionTransition style="slide-up">
               <ProjectsSection />
             </SectionTransition>
