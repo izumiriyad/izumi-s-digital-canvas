@@ -24,6 +24,9 @@ import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import SectionTransition from '@/components/SectionTransition';
+import SEO from '@/components/SEO';
+import TrustBar from '@/components/TrustBar';
+import SocialProofToast from '@/components/SocialProofToast';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
