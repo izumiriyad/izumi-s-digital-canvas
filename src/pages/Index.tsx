@@ -132,6 +132,9 @@ const Index = () => {
             <SectionTransition style="slide-up">
               <FAQSection />
             </SectionTransition>
+            <SectionTransition style="zoom">
+              <CalendlyEmbed />
+            </SectionTransition>
             <SectionTransition style="curtain">
               <ContactSection />
             </SectionTransition>
