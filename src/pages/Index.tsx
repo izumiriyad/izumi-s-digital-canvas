@@ -27,6 +27,8 @@ import SectionTransition from '@/components/SectionTransition';
 import SEO from '@/components/SEO';
 import TrustBar from '@/components/TrustBar';
 import SocialProofToast from '@/components/SocialProofToast';
+import AIChatbot from '@/components/AIChatbot';
+import CalendlyEmbed from '@/components/CalendlyEmbed';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -85,6 +87,7 @@ const Index = () => {
           <FloatingHireButton />
           <BackToTop />
           <SocialProofToast />
+          <AIChatbot />
 
           {/* Main Sections */}
           <main>
@@ -128,6 +131,9 @@ const Index = () => {
             </SectionTransition>
             <SectionTransition style="slide-up">
               <FAQSection />
+            </SectionTransition>
+            <SectionTransition style="zoom">
+              <CalendlyEmbed />
             </SectionTransition>
             <SectionTransition style="curtain">
               <ContactSection />
