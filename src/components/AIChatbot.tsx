@@ -322,7 +322,40 @@ const AIChatbot = () => {
                   >
                     {m.role === 'assistant' ? (
                       <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-1.5 prose-ul:my-1.5 prose-ol:my-1.5 prose-li:my-0.5 prose-headings:my-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:bg-background/60 prose-code:text-primary prose-code:before:content-none prose-code:after:content-none prose-a:text-primary prose-strong:text-foreground">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            a: ({ href = '', children, ...props }) => {
+                              const isInternal = href.startsWith('/') || href.startsWith('#');
+                              if (isInternal) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      handleInternalNav(href);
+                                    }}
+                                    className="inline-flex items-center gap-1 px-1.5 py-0.5 -my-0.5 rounded-md border border-primary/40 bg-primary/10 text-primary text-[12px] font-medium no-underline hover:bg-primary/20 hover:border-primary/60 transition-colors"
+                                  >
+                                    {children}
+                                  </button>
+                                );
+                              }
+                              return (
+                                <a
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-primary underline hover:no-underline"
+                                  {...props}
+                                >
+                                  {children}
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              );
+                            },
+                          }}
+                        >
                           {m.content || '\u200B'}
                         </ReactMarkdown>
                         {status === 'streaming' && i === messages.length - 1 && (
