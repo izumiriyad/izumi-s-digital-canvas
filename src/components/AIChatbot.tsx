@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Loader2, Sparkles, RotateCcw, Trash2, AlertTriangle } from 'lucide-react';
+import { X, Send, Loader2, Sparkles, RotateCcw, Trash2, AlertTriangle, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -44,6 +45,31 @@ const AIChatbot = () => {
     } catch {}
     return [GREETING];
   });
+
+  const navigate = useNavigate();
+
+  const handleInternalNav = useCallback(
+    (href: string) => {
+      setOpen(false);
+      // hash on current page: /#section or #section
+      const hashMatch = href.match(/^\/?#(.+)$/);
+      if (hashMatch) {
+        const id = hashMatch[1];
+        if (window.location.pathname !== '/') {
+          navigate('/');
+          setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        } else {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [navigate],
+  );
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -296,7 +322,40 @@ const AIChatbot = () => {
                   >
                     {m.role === 'assistant' ? (
                       <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-1.5 prose-ul:my-1.5 prose-ol:my-1.5 prose-li:my-0.5 prose-headings:my-2 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:bg-background/60 prose-code:text-primary prose-code:before:content-none prose-code:after:content-none prose-a:text-primary prose-strong:text-foreground">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            a: ({ href = '', children, ...props }) => {
+                              const isInternal = href.startsWith('/') || href.startsWith('#');
+                              if (isInternal) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      handleInternalNav(href);
+                                    }}
+                                    className="inline-flex items-center gap-1 px-1.5 py-0.5 -my-0.5 rounded-md border border-primary/40 bg-primary/10 text-primary text-[12px] font-medium no-underline hover:bg-primary/20 hover:border-primary/60 transition-colors"
+                                  >
+                                    {children}
+                                  </button>
+                                );
+                              }
+                              return (
+                                <a
+                                  href={href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-primary underline hover:no-underline"
+                                  {...props}
+                                >
+                                  {children}
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              );
+                            },
+                          }}
+                        >
                           {m.content || '\u200B'}
                         </ReactMarkdown>
                         {status === 'streaming' && i === messages.length - 1 && (
