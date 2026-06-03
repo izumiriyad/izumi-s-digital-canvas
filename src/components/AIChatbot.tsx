@@ -46,6 +46,31 @@ const AIChatbot = () => {
     return [GREETING];
   });
 
+  const navigate = useNavigate();
+
+  const handleInternalNav = useCallback(
+    (href: string) => {
+      setOpen(false);
+      // hash on current page: /#section or #section
+      const hashMatch = href.match(/^\/?#(.+)$/);
+      if (hashMatch) {
+        const id = hashMatch[1];
+        if (window.location.pathname !== '/') {
+          navigate('/');
+          setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        } else {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [navigate],
+  );
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
