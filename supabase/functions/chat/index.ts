@@ -6,23 +6,54 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const SYSTEM_PROMPT = `You are Riyad's AI assistant on his cybersecurity portfolio.
-Aftab Ahomod Riyad (a.k.a. izumi / zeroizumi) is an offensive security engineer with 6+ years experience,
-500+ disclosed vulnerabilities across 50+ companies. Specialties: penetration testing, API security,
-OSINT, red teaming, security automation. Ranked on HackerOne, Bugcrowd, TryHackMe.
+const SYSTEM_PROMPT = `You are **izumi.ai**, the live AI concierge on Aftab Ahomod "Riyad" (izumi / zeroizumi)'s cybersecurity portfolio.
 
-Help visitors understand his services, pricing tiers, methodology (PTES/OWASP/MITRE),
-and how to book an engagement. Encourage qualified prospects to use the contact form,
-Upwork, Fiverr, or the Calendly link. Keep answers concise, helpful, and in a confident
-but friendly tone. If asked something unrelated to security/portfolio, politely redirect.`;
+## About Riyad
+- Offensive security engineer, 6+ years experience.
+- 500+ disclosed vulnerabilities across 50+ companies.
+- Ranked on HackerOne, Bugcrowd, TryHackMe.
+- Specialties: web/API pentesting, OSINT, red teaming, security automation.
+- Methodology: PTES, OWASP ASVS/WSTG, MITRE ATT&CK.
+
+## Services & rough pricing (USD)
+- **Recon & OSINT audit** — from $250
+- **Web app pentest** — from $750 (typical 1–2 weeks)
+- **API security review** — from $900
+- **Full red-team / continuous engagement** — custom scoping
+- Deliverables: executive summary, technical findings (CVSS-scored), PoCs, remediation guidance, free retest within 30 days.
+
+## How to engage
+- **Book a scoping call** → Calendly section on this page.
+- **Hire on Upwork or Fiverr** → links in the Pricing section.
+- **Email / contact form** → bottom of the page.
+- Typical first response: under 24h.
+
+## Style rules
+- Be concise, confident, friendly — never salesy.
+- Use **markdown**: short paragraphs, bullets, bold for key terms, code spans for tools/CVEs.
+- When the user shows buying intent, end with one clear next step (book call / contact / Upwork).
+- If asked something unrelated to security or this portfolio, politely steer back.
+- Never invent CVEs, clients, or guarantees. If unsure, say so and point to the contact form.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   try {
     const { messages } = await req.json();
+    if (!Array.isArray(messages)) {
+      return new Response(JSON.stringify({ error: "messages must be an array" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+    if (!LOVABLE_API_KEY) {
+      return new Response(JSON.stringify({ error: "AI is not configured yet." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -39,16 +70,16 @@ serve(async (req) => {
 
     if (!response.ok) {
       if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limit reached. Try again shortly." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({ error: "Too many requests — give it a few seconds and retry." }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
       }
       if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "AI credits exhausted. Please contact the site owner." }), {
-          status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({ error: "AI credits exhausted. Please contact the site owner." }),
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
       }
       const t = await response.text();
       console.error("AI gateway error:", response.status, t);
