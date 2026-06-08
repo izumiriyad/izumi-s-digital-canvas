@@ -29,6 +29,9 @@ import TrustBar from '@/components/TrustBar';
 import SocialProofToast from '@/components/SocialProofToast';
 import AIChatbot from '@/components/AIChatbot';
 import CalendlyEmbed from '@/components/CalendlyEmbed';
+import CVETicker from '@/components/CVETicker';
+import QuoteCalculator from '@/components/QuoteCalculator';
+import ROICalculator from '@/components/ROICalculator';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -92,6 +95,7 @@ const Index = () => {
           {/* Main Sections */}
           <main>
             <HeroSection />
+            <CVETicker />
             <TrustBar />
             <SectionTransition style="slide-up">
               <ProjectsSection />
@@ -128,6 +132,12 @@ const Index = () => {
             </SectionTransition>
             <SectionTransition style="flip">
               <PricingSection />
+            </SectionTransition>
+            <SectionTransition style="slide-up" delay={0.1}>
+              <QuoteCalculator />
+            </SectionTransition>
+            <SectionTransition style="zoom">
+              <ROICalculator />
             </SectionTransition>
             <SectionTransition style="slide-up">
               <FAQSection />

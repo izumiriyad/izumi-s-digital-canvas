@@ -8,6 +8,7 @@ import TypingEffect from './TypingEffect';
 import heroBg from '@/assets/hero-bg.jpg';
 import profilePhoto from '@/assets/izumi-profile.jpg';
 import AvailabilityBadge from './AvailabilityBadge';
+import HeroCodeReel from './HeroCodeReel';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -56,6 +57,9 @@ const HeroSection = () => {
           y: bgY,
         }}
       />
+
+      {/* Animated code reel behind everything */}
+      <HeroCodeReel />
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
