@@ -61,10 +61,12 @@ const QuoteCalculator = () => {
   return (
     <section id="quote" className="py-20 relative">
       <div className="container mx-auto px-6 max-w-5xl">
-        <SectionTitle
-          title="Instant Quote Calculator"
-          subtitle="Estimate your engagement in seconds — no email required"
-        />
+        <div className="text-center mb-10">
+          <SectionTitle text="Instant Quote Calculator" />
+          <p className="text-muted-foreground mt-2">
+            Estimate your engagement in seconds — no email required
+          </p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

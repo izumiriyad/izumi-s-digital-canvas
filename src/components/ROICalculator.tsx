@@ -27,10 +27,12 @@ const ROICalculator = () => {
   return (
     <section id="roi" className="py-20 relative">
       <div className="container mx-auto px-6 max-w-5xl">
-        <SectionTitle
-          title="Breach Prevention ROI"
-          subtitle="Quantify the financial upside of catching bugs before attackers do"
-        />
+        <div className="text-center mb-10">
+          <SectionTitle text="Breach Prevention ROI" />
+          <p className="text-muted-foreground mt-2">
+            Quantify the financial upside of catching bugs before attackers do
+          </p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
