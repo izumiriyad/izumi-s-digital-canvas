@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aftab Riyad — Security Research</title>
+    <link>https://riyad.sec</link>
+    <description>CVE disclosures, writeups, and offensive security research from Aftab Ahomod Riyad.</description>
+    <language>en-us</language>
+    <item>
+      <title>Latest CVE disclosures</title>
+      <link>https://riyad.sec/cve</link>
+      <description>Live list of disclosed vulnerabilities and PoCs.</description>
+    </item>
+    <item>
+      <title>Pentesting methodology</title>
+      <link>https://riyad.sec/#process</link>
+      <description>How I scope, execute, and report security engagements.</description>
+    </item>
+  </channel>
+</rss>

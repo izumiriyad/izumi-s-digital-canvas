@@ -32,6 +32,14 @@ import CalendlyEmbed from '@/components/CalendlyEmbed';
 import CVETicker from '@/components/CVETicker';
 import QuoteCalculator from '@/components/QuoteCalculator';
 import ROICalculator from '@/components/ROICalculator';
+import AttackChainVisualizer from '@/components/AttackChainVisualizer';
+import CVSSCalculator from '@/components/CVSSCalculator';
+import HallOfFame from '@/components/HallOfFame';
+import ThreatModelGallery from '@/components/ThreatModelGallery';
+import ScopeWizard from '@/components/ScopeWizard';
+import GitHubHeatmap from '@/components/GitHubHeatmap';
+import TrustExtras from '@/components/TrustExtras';
+import BacklinkBadge from '@/components/BacklinkBadge';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -137,7 +145,31 @@ const Index = () => {
               <QuoteCalculator />
             </SectionTransition>
             <SectionTransition style="zoom">
+              <ScopeWizard />
+            </SectionTransition>
+            <SectionTransition style="slide-left">
+              <AttackChainVisualizer />
+            </SectionTransition>
+            <SectionTransition style="zoom">
+              <ThreatModelGallery />
+            </SectionTransition>
+            <SectionTransition style="slide-right">
+              <CVSSCalculator />
+            </SectionTransition>
+            <SectionTransition style="zoom">
               <ROICalculator />
+            </SectionTransition>
+            <SectionTransition style="slide-up">
+              <HallOfFame />
+            </SectionTransition>
+            <SectionTransition style="slide-up">
+              <GitHubHeatmap />
+            </SectionTransition>
+            <SectionTransition style="curtain">
+              <TrustExtras />
+            </SectionTransition>
+            <SectionTransition style="slide-up">
+              <BacklinkBadge />
             </SectionTransition>
             <SectionTransition style="slide-up">
               <FAQSection />
