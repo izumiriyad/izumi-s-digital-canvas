@@ -3,18 +3,29 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import { ThemeProvider } from "./hooks/use-theme";
 import Index from "./pages/Index";
-import ProjectDetail from "./pages/ProjectDetail";
-import CVEs from "./pages/CVEs";
-import WhoAmI from "./pages/WhoAmI";
-import Compare from "./pages/Compare";
-import NotFound from "./pages/NotFound";
 import CommandPalette from "./components/CommandPalette";
 import KonamiRedTeam from "./components/KonamiRedTeam";
 import SoundToggle from "./components/SoundToggle";
 
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const CVEs = lazy(() => import("./pages/CVEs"));
+const WhoAmI = lazy(() => import("./pages/WhoAmI"));
+const Compare = lazy(() => import("./pages/Compare"));
+const Services = lazy(() => import("./pages/Services"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const SampleReport = lazy(() => import("./pages/SampleReport"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
 const queryClient = new QueryClient();
+
+const RouteFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <span className="font-mono text-sm text-muted-foreground animate-pulse">loading module…</span>
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -26,15 +37,20 @@ const App = () => (
           <CommandPalette />
           <KonamiRedTeam />
           <SoundToggle />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/projects/:slug" element={<ProjectDetail />} />
-            <Route path="/cve" element={<CVEs />} />
-            <Route path="/whoami" element={<WhoAmI />} />
-            <Route path="/compare" element={<Compare />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
+              <Route path="/report" element={<SampleReport />} />
+              <Route path="/cve" element={<CVEs />} />
+              <Route path="/whoami" element={<WhoAmI />} />
+              <Route path="/compare" element={<Compare />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
