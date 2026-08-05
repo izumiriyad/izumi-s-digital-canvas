@@ -1,66 +1,39 @@
-# Top-Notch Enhancement Roadmap
+# Next-Level Upgrades — Round 3
 
-Curated upgrades grouped by impact. Pick any combination and I'll build them.
+The obvious wins are already shipped (quote/ROI calculators, CVE ticker, attack-chain, CVSS, Hall of Fame, threat models, scope wizard, command palette, trust/compliance, chatbot with citations, per-route SEO). What's left splits into two buckets: **finish the skipped items** and **add depth that competitors can't copy**.
 
-## 1. Conversion & Trust (highest ROI)
+## A. Finish what was skipped
 
-- **Live availability widget** in hero ("Booking Q2 2026 — 2 slots left") with auto-calculated calendar status.
-- **Trust bar with verified badges**: HackerOne rank, Bugcrowd MVP, CVE count — pulled into a sticky strip.
-- **Social proof toasts**: subtle "New engagement booked from FinTech client" notifications (rotating, non-intrusive).
-- **Lead magnet**: gated PDF ("Top 10 API Vulnerabilities in 2026") in exchange for email → grows pipeline.
-- **Calendly / Cal.com embed** in the Contact area for instant discovery-call booking.
+1. **Dynamic OG image generator** — edge function renders per-page social cards (project title, severity, CVE count) so every share looks designed instead of generic.
+2. **RAG chatbot upgrade** — index your project/CVE/blog data into the database with embeddings so answers quote real case-study numbers instead of the static prompt.
+3. **Programmatic service pages** — `/services/:slug` (web pentest, API review, OSINT, cloud, mobile, web3) each with its own SEO metadata, scope, deliverables, price, FAQ. Biggest untapped organic-traffic lever.
+4. **3D threat globe** in hero — optional, lazy-loaded so it never touches initial bundle.
 
-## 2. Portfolio Depth
+## B. Real depth (my recommendations)
 
-- **Interactive vulnerability demo** on each ProjectDetail page — animated terminal replay of the exploit (sanitized).
-- **Before/After security posture chart** per case study (Recharts radar or bar).
-- **Downloadable redacted sample report** (PDF) attached to each case study.
-- **"Methodology" tab** on ProjectDetail with the OWASP/PTES phase mapping.
+5. **Live report viewer** — an interactive sample pentest report: collapsible findings, CVSS chips, PoC code blocks, remediation tabs. Buyers want to see the deliverable before paying.
+6. **Vulnerability lab / playground** — a safe sandboxed demo (SQLi, XSS, IDOR) where visitors "exploit" a fake target and watch your write-up appear. Sticky, shareable, proves skill.
+7. **Client portal (auth)** — sign-in area where a client sees their engagement status, findings list, and retest requests. Turns the portfolio into a product.
+8. **Engagement request pipeline in the database** — the tailored-assessment form writes to your backend (not just Formspree) with a private admin dashboard: status, industry, value, notes.
+9. **Security scorecard tool** — visitor enters a domain, gets a free surface-level grade (headers, TLS, DNS hygiene) via edge function, then a CTA to book. Lead magnet that actually works.
+10. **Automated CVE/blog feed** — scheduled function pulls NVD data into the database so `/cve` and the ticker stay current without edits.
 
-## 3. Authority Content
+## C. Polish pass
 
-- **CVE showcase page** (`/cve`) listing disclosed vulnerabilities with severity, vendor, CVSS, write-up link.
-- **Tools / Open-source page** (`/tools`) for your scanners and recon utilities with GitHub stars badge.
-- **Newsletter signup** ("Weekly Recon") powered by Formspree or Resend.
-- **Speaking & media** strip (talks, podcasts, interviews).
-
-## 4. UX & Performance
-
-- **Command palette (⌘K)** for instant navigation, theme toggle, "hire me", copy email.
-- **Route-level code splitting** + image lazy loading audit; target Lighthouse 95+.
-- **Reduced-motion mode**: respect `prefers-reduced-motion` across Matrix rain, cursor, parallax.
-- **Skeleton loaders** instead of blank states during section transitions.
-- **PWA**: installable, offline shell, app icon.
-
-## 5. SEO & Discoverability
-
-- **Per-route metadata** with React Helmet (titles, descriptions, OG images per project)
-- **JSON-LD** Person + Service schema, plus BreadcrumbList on ProjectDetail.
-- **Auto-generated sitemap.xml** and updated `robots.txt`.
-- **OG image generator** (dynamic project preview cards).
-
-## 6. Interactivity & "Wow"
-
-- **Threat-map globe** (react-globe.gl) in hero showing live-style attack vectors.
-- **Hackable terminal** Easter egg — type `help`, `whoami`, `sudo hire` for hidden interactions.
-- **Konami code** unlocks a "red team mode" theme.
-- **Scroll-driven WebGL shader** background as a heavier alternative to Matrix rain.
-
-## 7. Polish
-
-- **Print stylesheet** for the resume section (clean A4 export).
-- **Multilingual toggle** (EN / BN) — expands Bangladesh + global reach.
-- **Accessibility pass**: WCAG AA color contrast audit, focus rings, keyboard nav for lightbox/carousel.
-- **404 page upgrade** with a glitchy terminal narrative.
+11. **Performance budget** — route-level code splitting, lazy-load heavy sections (charts, globe, gallery), target Lighthouse 95+. The homepage currently mounts ~25 sections at once.
+12. **Homepage restructure** — 25 stacked sections is too long; group into tabbed/anchored clusters (Work · Tools · Pricing · Trust) so visitors reach the CTA faster.
+13. **Accessibility + reduced-motion audit** — WCAG AA contrast, focus rings, keyboard nav for lightbox/carousel/palette, honor `prefers-reduced-motion` across rain/cursor/parallax.
+14. **PWA + print stylesheet** — installable offline shell, clean A4 resume export.
+15. **Analytics + funnel events** — track CTA clicks, calculator completions, chatbot intents so you know what converts.
 
 ---
 
-## My Top 5 Recommended (if you want a single pick)
+## My top 5 if you want one pick
 
-1. Command palette (⌘K)
-2. CVE showcase page
-3. Per-route SEO metadata + JSON-LD
-4. AI assistant chatbot (Lovable Cloud + AI Gateway)
-5. Interactive vulnerability demo on ProjectDetail
+1. Programmatic service pages (#3) — SEO revenue
+2. Live report viewer (#5) — closes deals
+3. Security scorecard lead magnet (#9)
+4. Homepage restructure + performance (#11, #12)
+5. Engagement pipeline with admin dashboard (#8)
 
-Tell me which numbered items (or groups) to build and I'll execute.
+Tell me the numbers and I'll build them in phases.
