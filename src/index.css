@@ -484,3 +484,88 @@
     text-wrap: balance;
   }
 }
+
+/* ---------------------------------------------------------------
+   Accessibility: respect prefers-reduced-motion
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .matrix-rain,
+  .grid-overlay,
+  .loading-glitch-text {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Print stylesheet — clean A4 output for resume & report pages
+   --------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .no-print,
+  nav,
+  header nav,
+  footer,
+  .matrix-rain,
+  .grid-overlay,
+  [data-radix-popper-content-wrapper] {
+    display: none !important;
+  }
+
+  .print-report,
+  .print-resume {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-report *,
+  .print-resume * {
+    color: #111 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .print-report pre,
+  .print-resume pre {
+    border: 1px solid #ccc !important;
+    background: #f6f6f6 !important;
+    white-space: pre-wrap !important;
+    page-break-inside: avoid;
+  }
+
+  .print-report section,
+  .print-report h1,
+  .print-report h2,
+  .print-report h3 {
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555 !important;
+  }
+}

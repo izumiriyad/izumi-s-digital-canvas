@@ -117,6 +117,16 @@ const Navbar = () => {
             ))}
             <li>
               <Link
+                to="/services"
+                className={`relative font-medium transition-colors duration-300 ${
+                  location.pathname.startsWith('/services') ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/cve"
                 className={`relative font-medium transition-colors duration-300 ${
                   location.pathname === '/cve' ? 'text-primary' : 'text-muted-foreground hover:text-primary'
@@ -200,6 +210,24 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/services"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-2 font-medium text-muted-foreground"
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/report"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block py-2 font-medium text-muted-foreground"
+                >
+                  Sample Report
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/cve"
