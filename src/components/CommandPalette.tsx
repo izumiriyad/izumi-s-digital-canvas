@@ -15,6 +15,9 @@ import {
   Copy,
   Linkedin,
   Github,
+  Wrench,
+  Terminal,
+  Scale,
 } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
 import { useToast } from '@/hooks/use-toast';
@@ -91,6 +94,18 @@ const CommandPalette = () => {
                 <Command.Group heading="Pages" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
                   <Item icon={ShieldAlert} onSelect={() => visit('/cve')}>
                     Disclosed CVEs
+                  </Item>
+                  <Item icon={Wrench} onSelect={() => visit('/services')}>
+                    All services
+                  </Item>
+                  <Item icon={FileText} onSelect={() => visit('/report')}>
+                    Sample pentest report
+                  </Item>
+                  <Item icon={Terminal} onSelect={() => visit('/whoami')}>
+                    whoami terminal
+                  </Item>
+                  <Item icon={Scale} onSelect={() => visit('/compare')}>
+                    Compare vs agencies
                   </Item>
                 </Command.Group>
 
