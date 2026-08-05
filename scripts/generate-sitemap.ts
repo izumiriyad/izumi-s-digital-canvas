@@ -20,9 +20,27 @@ const projectSlugs = [
   'bug-bounty-pro-toolkit',
 ];
 
+const serviceSlugs = [
+  'web-application-penetration-testing',
+  'api-security-review',
+  'osint-and-attack-surface-audit',
+  'cloud-security-audit',
+  'mobile-application-security-testing',
+  'smart-contract-and-web3-audit',
+];
+
 const entries: SitemapEntry[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
+  { path: '/services', changefreq: 'weekly', priority: '0.9' },
+  ...serviceSlugs.map((slug) => ({
+    path: `/services/${slug}`,
+    changefreq: 'monthly' as const,
+    priority: '0.8',
+  })),
+  { path: '/report', changefreq: 'monthly', priority: '0.7' },
   { path: '/cve', changefreq: 'weekly', priority: '0.8' },
+  { path: '/whoami', changefreq: 'monthly', priority: '0.5' },
+  { path: '/compare', changefreq: 'monthly', priority: '0.6' },
   ...projectSlugs.map((slug) => ({
     path: `/projects/${slug}`,
     changefreq: 'monthly' as const,
