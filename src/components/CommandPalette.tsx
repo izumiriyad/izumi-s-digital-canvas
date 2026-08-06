@@ -88,7 +88,10 @@ const CommandPalette = () => {
                   <Item icon={Star} onSelect={() => go('#testimonials')}>Testimonials</Item>
                   <Item icon={DollarSign} onSelect={() => go('#pricing')}>Pricing</Item>
                   <Item icon={HelpCircle} onSelect={() => go('#faq')}>FAQ</Item>
+                  <Item icon={ShieldAlert} onSelect={() => go('#scorecard')}>Free security scorecard</Item>
+                  <Item icon={DollarSign} onSelect={() => go('#retainers')}>Retainers</Item>
                   <Item icon={Mail} onSelect={() => go('#contact')}>Contact</Item>
+
                 </Command.Group>
 
                 <Command.Group heading="Pages" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
