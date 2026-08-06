@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Clock, Target, Sparkles, ArrowRight, FileText, Workflow } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, Target, Sparkles, ArrowRight, FileText, Workflow, Bug } from 'lucide-react';
+import ExploitReplayViewer from '@/components/ExploitReplayViewer';
+import { getExploitReplay } from '@/data/exploitReplays';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
@@ -30,6 +33,8 @@ const ProjectDetail = () => {
   if (!project) return <Navigate to="/" replace />;
 
   const otherProjects = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
+  const replay = getExploitReplay(project.slug);
+
 
   return (
     <div className="relative min-h-screen bg-background">
@@ -112,6 +117,19 @@ const ProjectDetail = () => {
           </div>
           <ScreenshotGallery screenshots={project.screenshots} title={project.title} />
         </section>
+
+        {/* Exploit replay */}
+        {replay && (
+          <section className="container mx-auto px-6 max-w-6xl py-16">
+            <div className="flex items-center gap-3 mb-8">
+              <Bug className="w-5 h-5 text-primary" />
+              <h2 className="text-2xl md:text-3xl font-bold">Interactive Exploit Replay</h2>
+            </div>
+            <ExploitReplayViewer replay={replay} />
+          </section>
+        )}
+
+
 
         {/* Impact metrics */}
         <ParallaxSection variant="dots" glowColor="primary">
