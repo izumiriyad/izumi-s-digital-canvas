@@ -40,6 +40,9 @@ import ScopeWizard from '@/components/ScopeWizard';
 import GitHubHeatmap from '@/components/GitHubHeatmap';
 import TrustExtras from '@/components/TrustExtras';
 import BacklinkBadge from '@/components/BacklinkBadge';
+import SecurityScorecard from '@/components/SecurityScorecard';
+import RetainerTiers from '@/components/RetainerTiers';
+
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -141,9 +144,16 @@ const Index = () => {
             <SectionTransition style="flip">
               <PricingSection />
             </SectionTransition>
+            <SectionTransition style="slide-left" delay={0.1}>
+              <RetainerTiers />
+            </SectionTransition>
             <SectionTransition style="slide-up" delay={0.1}>
               <QuoteCalculator />
             </SectionTransition>
+            <SectionTransition style="zoom">
+              <SecurityScorecard />
+            </SectionTransition>
+
             <SectionTransition style="zoom">
               <ScopeWizard />
             </SectionTransition>
