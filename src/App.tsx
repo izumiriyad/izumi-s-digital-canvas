@@ -41,24 +41,45 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <CommandPalette />
-          <KonamiRedTeam />
-          <SoundToggle />
-          <Suspense fallback={<RouteFallback />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/projects/:slug" element={<ProjectDetail />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:slug" element={<ServiceDetail />} />
-              <Route path="/report" element={<SampleReport />} />
-              <Route path="/cve" element={<CVEs />} />
-              <Route path="/whoami" element={<WhoAmI />} />
-              <Route path="/compare" element={<Compare />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <AuthProvider>
+            <CommandPalette />
+            <KonamiRedTeam />
+            <SoundToggle />
+            <Suspense fallback={<RouteFallback />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/projects/:slug" element={<ProjectDetail />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/report" element={<SampleReport />} />
+                <Route path="/cve" element={<CVEs />} />
+                <Route path="/whoami" element={<WhoAmI />} />
+                <Route path="/compare" element={<Compare />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route
+                  path="/portal"
+                  element={
+                    <RequireAuth>
+                      <Portal />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/portal/admin"
+                  element={
+                    <RequireAuth adminOnly>
+                      <AdminPortal />
+                    </RequireAuth>
+                  }
+                />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </AuthProvider>
         </BrowserRouter>
+
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
