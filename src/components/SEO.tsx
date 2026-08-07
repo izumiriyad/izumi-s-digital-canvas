@@ -6,10 +6,11 @@ interface SEOProps {
   canonical?: string;
   image?: string;
   type?: 'website' | 'article' | 'profile';
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SEO = ({ title, description, canonical, image, type = 'website', jsonLd }: SEOProps) => {
+const SEO = ({ title, description, canonical, image, type = 'website', noindex, jsonLd }: SEOProps) => {
   const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '…' : description;
   const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '…' : title;
 
@@ -17,7 +18,9 @@ const SEO = ({ title, description, canonical, image, type = 'website', jsonLd }:
     <Helmet>
       <title>{truncatedTitle}</title>
       <meta name="description" content={truncatedDesc} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       {canonical && <link rel="canonical" href={canonical} />}
+
       <meta property="og:title" content={truncatedTitle} />
       <meta property="og:description" content={truncatedDesc} />
       <meta property="og:type" content={type} />
