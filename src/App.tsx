@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ThemeProvider } from "./hooks/use-theme";
+import { AuthProvider } from "./hooks/use-auth";
+import RequireAuth from "./components/RequireAuth";
 import Index from "./pages/Index";
 import CommandPalette from "./components/CommandPalette";
 import KonamiRedTeam from "./components/KonamiRedTeam";
@@ -17,9 +19,14 @@ const Compare = lazy(() => import("./pages/Compare"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const SampleReport = lazy(() => import("./pages/SampleReport"));
+const Auth = lazy(() => import("./pages/Auth"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const Portal = lazy(() => import("./pages/Portal"));
+const AdminPortal = lazy(() => import("./pages/AdminPortal"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
+
 
 const RouteFallback = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -34,24 +41,45 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <CommandPalette />
-          <KonamiRedTeam />
-          <SoundToggle />
-          <Suspense fallback={<RouteFallback />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/projects/:slug" element={<ProjectDetail />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:slug" element={<ServiceDetail />} />
-              <Route path="/report" element={<SampleReport />} />
-              <Route path="/cve" element={<CVEs />} />
-              <Route path="/whoami" element={<WhoAmI />} />
-              <Route path="/compare" element={<Compare />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <AuthProvider>
+            <CommandPalette />
+            <KonamiRedTeam />
+            <SoundToggle />
+            <Suspense fallback={<RouteFallback />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/projects/:slug" element={<ProjectDetail />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/report" element={<SampleReport />} />
+                <Route path="/cve" element={<CVEs />} />
+                <Route path="/whoami" element={<WhoAmI />} />
+                <Route path="/compare" element={<Compare />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route
+                  path="/portal"
+                  element={
+                    <RequireAuth>
+                      <Portal />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/portal/admin"
+                  element={
+                    <RequireAuth adminOnly>
+                      <AdminPortal />
+                    </RequireAuth>
+                  }
+                />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </AuthProvider>
         </BrowserRouter>
+
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
