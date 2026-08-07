@@ -42,6 +42,7 @@ import TrustExtras from '@/components/TrustExtras';
 import BacklinkBadge from '@/components/BacklinkBadge';
 import SecurityScorecard from '@/components/SecurityScorecard';
 import RetainerTiers from '@/components/RetainerTiers';
+import RetainerComparison from '@/components/RetainerComparison';
 
 
 const Index = () => {
