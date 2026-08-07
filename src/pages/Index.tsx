@@ -42,6 +42,7 @@ import TrustExtras from '@/components/TrustExtras';
 import BacklinkBadge from '@/components/BacklinkBadge';
 import SecurityScorecard from '@/components/SecurityScorecard';
 import RetainerTiers from '@/components/RetainerTiers';
+import RetainerComparison from '@/components/RetainerComparison';
 
 
 const Index = () => {
@@ -147,7 +148,11 @@ const Index = () => {
             <SectionTransition style="slide-left" delay={0.1}>
               <RetainerTiers />
             </SectionTransition>
+            <SectionTransition style="slide-right" delay={0.1}>
+              <RetainerComparison />
+            </SectionTransition>
             <SectionTransition style="slide-up" delay={0.1}>
+
               <QuoteCalculator />
             </SectionTransition>
             <SectionTransition style="zoom">
