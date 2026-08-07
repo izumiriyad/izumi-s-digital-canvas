@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ThemeProvider } from "./hooks/use-theme";
+import { AuthProvider } from "./hooks/use-auth";
+import RequireAuth from "./components/RequireAuth";
 import Index from "./pages/Index";
 import CommandPalette from "./components/CommandPalette";
 import KonamiRedTeam from "./components/KonamiRedTeam";
@@ -17,9 +19,14 @@ const Compare = lazy(() => import("./pages/Compare"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const SampleReport = lazy(() => import("./pages/SampleReport"));
+const Auth = lazy(() => import("./pages/Auth"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const Portal = lazy(() => import("./pages/Portal"));
+const AdminPortal = lazy(() => import("./pages/AdminPortal"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
+
 
 const RouteFallback = () => (
   <div className="min-h-screen flex items-center justify-center">
