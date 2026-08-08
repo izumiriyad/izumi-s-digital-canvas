@@ -42,7 +42,15 @@ const LazySection = ({
       { rootMargin },
     );
     observer.observe(node);
-    return () => observer.disconnect();
+
+    // Safety net: mount everything once the browser is idle so hash links
+    // (#contact, #pricing, …) and in-page search always resolve.
+    const idle = window.setTimeout(() => setVisible(true), 2500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(idle);
+    };
   }, [visible, rootMargin]);
 
   const placeholder = (
