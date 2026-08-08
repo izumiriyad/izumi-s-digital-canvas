@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+import { track } from '@/lib/analytics';
 
 const FloatingHireButton = () => {
   const handleClick = () => {
+    track('cta_hire_click');
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -17,6 +19,7 @@ const FloatingHireButton = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
+      aria-label="Jump to contact form"
       className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-neon-green to-electric-blue text-background font-bold rounded-full shadow-lg shadow-neon-green/30 hover:shadow-neon-green/50 transition-shadow duration-300"
     >
       <Briefcase className="w-5 h-5" />
