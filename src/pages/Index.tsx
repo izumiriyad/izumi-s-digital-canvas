@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from '@/components/LoadingScreen';
 import MatrixRain from '@/components/MatrixRain';
@@ -14,36 +14,39 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import AboutSection from '@/components/AboutSection';
 import ClientLogosSection from '@/components/ClientLogosSection';
 import SkillsSection from '@/components/SkillsSection';
-import CertificationsSection from '@/components/CertificationsSection';
-import ResumeSection from '@/components/ResumeSection';
-import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
-import CaseStudiesSection from '@/components/CaseStudiesSection';
-import TailoredAssessmentCTA from '@/components/TailoredAssessmentCTA';
-import FAQSection from '@/components/FAQSection';
-import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import SectionTransition from '@/components/SectionTransition';
 import SEO from '@/components/SEO';
 import TrustBar from '@/components/TrustBar';
 import SocialProofToast from '@/components/SocialProofToast';
 import AIChatbot from '@/components/AIChatbot';
-import CalendlyEmbed from '@/components/CalendlyEmbed';
 import CVETicker from '@/components/CVETicker';
-import QuoteCalculator from '@/components/QuoteCalculator';
-import ROICalculator from '@/components/ROICalculator';
-import AttackChainVisualizer from '@/components/AttackChainVisualizer';
-import CVSSCalculator from '@/components/CVSSCalculator';
-import HallOfFame from '@/components/HallOfFame';
-import ThreatModelGallery from '@/components/ThreatModelGallery';
-import ScopeWizard from '@/components/ScopeWizard';
-import GitHubHeatmap from '@/components/GitHubHeatmap';
-import TrustExtras from '@/components/TrustExtras';
-import BacklinkBadge from '@/components/BacklinkBadge';
-import SecurityScorecard from '@/components/SecurityScorecard';
-import RetainerTiers from '@/components/RetainerTiers';
-import RetainerComparison from '@/components/RetainerComparison';
 
+import LazySection from '@/components/LazySection';
+import PWAInstallPrompt from '@/components/PWAInstallPrompt';
+
+const CaseStudiesSection = lazy(() => import('@/components/CaseStudiesSection'));
+const TailoredAssessmentCTA = lazy(() => import('@/components/TailoredAssessmentCTA'));
+const PricingSection = lazy(() => import('@/components/PricingSection'));
+const RetainerTiers = lazy(() => import('@/components/RetainerTiers'));
+const RetainerComparison = lazy(() => import('@/components/RetainerComparison'));
+const QuoteCalculator = lazy(() => import('@/components/QuoteCalculator'));
+const SecurityScorecard = lazy(() => import('@/components/SecurityScorecard'));
+const ScopeWizard = lazy(() => import('@/components/ScopeWizard'));
+const AttackChainVisualizer = lazy(() => import('@/components/AttackChainVisualizer'));
+const ThreatModelGallery = lazy(() => import('@/components/ThreatModelGallery'));
+const CVSSCalculator = lazy(() => import('@/components/CVSSCalculator'));
+const ROICalculator = lazy(() => import('@/components/ROICalculator'));
+const HallOfFame = lazy(() => import('@/components/HallOfFame'));
+const GitHubHeatmap = lazy(() => import('@/components/GitHubHeatmap'));
+const TrustExtras = lazy(() => import('@/components/TrustExtras'));
+const BacklinkBadge = lazy(() => import('@/components/BacklinkBadge'));
+const FAQSection = lazy(() => import('@/components/FAQSection'));
+const CalendlyEmbed = lazy(() => import('@/components/CalendlyEmbed'));
+const ContactSection = lazy(() => import('@/components/ContactSection'));
+const ResumeSection = lazy(() => import('@/components/ResumeSection'));
+const CertificationsSection = lazy(() => import('@/components/CertificationsSection'));
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -103,9 +106,13 @@ const Index = () => {
           <BackToTop />
           <SocialProofToast />
           <AIChatbot />
+          <PWAInstallPrompt />
 
           {/* Main Sections */}
-          <main>
+          <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border focus:border-primary/50 focus:bg-card focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-primary">
+            Skip to content
+          </a>
+          <main id="main">
             <HeroSection />
             <CVETicker />
             <TrustBar />
@@ -127,74 +134,116 @@ const Index = () => {
             <SectionTransition style="curtain">
               <SkillsSection />
             </SectionTransition>
-            <SectionTransition style="slide-left">
-              <CertificationsSection />
-            </SectionTransition>
-            <SectionTransition style="zoom" delay={0.1}>
-              <ResumeSection />
-            </SectionTransition>
+            <LazySection label="certifications">
+              <SectionTransition style="slide-left">
+                <CertificationsSection />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="resume">
+              <SectionTransition style="zoom" delay={0.1}>
+                <ResumeSection />
+              </SectionTransition>
+            </LazySection>
             <SectionTransition style="slide-right">
               <ProcessSection />
             </SectionTransition>
-            <SectionTransition style="zoom">
-              <CaseStudiesSection onIndustryChange={setSelectedIndustry} />
-            </SectionTransition>
-            <SectionTransition style="slide-up">
-              <TailoredAssessmentCTA defaultIndustry={selectedIndustry} />
-            </SectionTransition>
-            <SectionTransition style="flip">
-              <PricingSection />
-            </SectionTransition>
-            <SectionTransition style="slide-left" delay={0.1}>
-              <RetainerTiers />
-            </SectionTransition>
-            <SectionTransition style="slide-right" delay={0.1}>
-              <RetainerComparison />
-            </SectionTransition>
-            <SectionTransition style="slide-up" delay={0.1}>
+            <LazySection label="casestudies">
+              <SectionTransition style="zoom">
+                <CaseStudiesSection onIndustryChange={setSelectedIndustry} />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="tailoredassessmentcta">
+              <SectionTransition style="slide-up">
+                <TailoredAssessmentCTA defaultIndustry={selectedIndustry} />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="pricing">
+              <SectionTransition style="flip">
+                <PricingSection />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="retainertiers">
+              <SectionTransition style="slide-left" delay={0.1}>
+                <RetainerTiers />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="retainercomparison">
+              <SectionTransition style="slide-right" delay={0.1}>
+                <RetainerComparison />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="quotecalculator">
+              <SectionTransition style="slide-up" delay={0.1}>
+  
+                <QuoteCalculator />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="securityscorecard">
+              <SectionTransition style="zoom">
+                <SecurityScorecard />
+              </SectionTransition>
+            </LazySection>
 
-              <QuoteCalculator />
-            </SectionTransition>
-            <SectionTransition style="zoom">
-              <SecurityScorecard />
-            </SectionTransition>
-
-            <SectionTransition style="zoom">
-              <ScopeWizard />
-            </SectionTransition>
-            <SectionTransition style="slide-left">
-              <AttackChainVisualizer />
-            </SectionTransition>
-            <SectionTransition style="zoom">
-              <ThreatModelGallery />
-            </SectionTransition>
-            <SectionTransition style="slide-right">
-              <CVSSCalculator />
-            </SectionTransition>
-            <SectionTransition style="zoom">
-              <ROICalculator />
-            </SectionTransition>
-            <SectionTransition style="slide-up">
-              <HallOfFame />
-            </SectionTransition>
-            <SectionTransition style="slide-up">
-              <GitHubHeatmap />
-            </SectionTransition>
-            <SectionTransition style="curtain">
-              <TrustExtras />
-            </SectionTransition>
-            <SectionTransition style="slide-up">
-              <BacklinkBadge />
-            </SectionTransition>
-            <SectionTransition style="slide-up">
-              <FAQSection />
-            </SectionTransition>
-            <SectionTransition style="zoom">
-              <CalendlyEmbed />
-            </SectionTransition>
-            <SectionTransition style="curtain">
-              <ContactSection />
-            </SectionTransition>
+            <LazySection label="scopewizard">
+              <SectionTransition style="zoom">
+                <ScopeWizard />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="attackchainvisualizer">
+              <SectionTransition style="slide-left">
+                <AttackChainVisualizer />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="threatmodelgallery">
+              <SectionTransition style="zoom">
+                <ThreatModelGallery />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="cvsscalculator">
+              <SectionTransition style="slide-right">
+                <CVSSCalculator />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="roicalculator">
+              <SectionTransition style="zoom">
+                <ROICalculator />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="halloffame">
+              <SectionTransition style="slide-up">
+                <HallOfFame />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="githubheatmap">
+              <SectionTransition style="slide-up">
+                <GitHubHeatmap />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="trustextras">
+              <SectionTransition style="curtain">
+                <TrustExtras />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="backlinkbadge">
+              <SectionTransition style="slide-up">
+                <BacklinkBadge />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="faq">
+              <SectionTransition style="slide-up">
+                <FAQSection />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="calendlyembed">
+              <SectionTransition style="zoom">
+                <CalendlyEmbed />
+              </SectionTransition>
+            </LazySection>
+            <LazySection label="contact">
+              <SectionTransition style="curtain">
+                <ContactSection />
+              </SectionTransition>
+            </LazySection>
           </main>
 
           {/* Footer */}
