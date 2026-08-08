@@ -8,3 +8,12 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </HelmetProvider>
 );
+
+// Offline shell (production only — avoids interfering with the dev server / HMR)
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      /* registration is best-effort */
+    });
+  });
+}
