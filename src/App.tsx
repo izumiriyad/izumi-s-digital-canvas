@@ -56,6 +56,7 @@ const App = () => (
             <CommandPalette />
             <KonamiRedTeam />
             <SoundToggle />
+            <CookieConsent />
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />
