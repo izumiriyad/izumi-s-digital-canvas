@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 import CommandPalette from "./components/CommandPalette";
 import KonamiRedTeam from "./components/KonamiRedTeam";
 import SoundToggle from "./components/SoundToggle";
+import CookieConsent from "./components/CookieConsent";
 
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const CVEs = lazy(() => import("./pages/CVEs"));
@@ -55,6 +56,7 @@ const App = () => (
             <CommandPalette />
             <KonamiRedTeam />
             <SoundToggle />
+            <CookieConsent />
             <Suspense fallback={<RouteFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />

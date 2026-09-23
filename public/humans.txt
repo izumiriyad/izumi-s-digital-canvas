@@ -1,0 +1,9 @@
+/* TEAM */
+Name: Aftab Ahomod Riyad (izumi)
+Role: Offensive Security Engineer / Security Researcher
+Site: https://www.linkedin.com/in/zeroizumi/
+Location: Bangladesh
+
+/* SITE */
+Focus: Penetration testing, API security, OSINT, offensive automation
+Stack: React, TypeScript, Tailwind CSS, Framer Motion
