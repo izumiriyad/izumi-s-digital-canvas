@@ -35,6 +35,14 @@ const RouteFallback = () => (
   </div>
 );
 
+const RouteTracker = () => {
+  const location = useLocation();
+  useEffect(() => {
+    trackPageView(location.pathname + location.search + location.hash);
+  }, [location]);
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
@@ -42,6 +50,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <RouteTracker />
           <AuthProvider>
             <CommandPalette />
             <KonamiRedTeam />

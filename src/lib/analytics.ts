@@ -58,9 +58,11 @@ export const track = (
     /* storage full or blocked — non-fatal */
   }
 
-  const w = window as unknown as { dataLayer?: unknown[] };
+  const w = window as unknown as { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
   w.dataLayer = w.dataLayer || [];
   w.dataLayer.push({ event: name, ...props });
+  // Forward funnel events to GA4 when gtag is available
+  w.gtag?.('event', name, props);
 
   if (import.meta.env.DEV) {
     console.debug('[funnel]', name, props ?? '');
