@@ -2,11 +2,25 @@
  * Google Analytics (GA4) via gtag.js.
  * The measurement ID comes from the Google Analytics connector and is
  * exposed client-side as VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY.
+ *
+ * Privacy: GA only loads after the visitor accepts analytics cookies
+ * (consent stored under 'izumi_ga_consent').
  */
 
 const measurementId = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY as
   | string
   | undefined;
+
+export const GA_CONSENT_KEY = "izumi_ga_consent";
+
+export const getAnalyticsConsent = (): "granted" | "denied" | "unset" => {
+  try {
+    const v = localStorage.getItem(GA_CONSENT_KEY);
+    return v === "granted" || v === "denied" ? v : "unset";
+  } catch {
+    return "unset";
+  }
+};
 
 declare global {
   interface Window {
@@ -18,7 +32,7 @@ declare global {
 let initialized = false;
 
 export const initGoogleAnalytics = () => {
-  if (initialized || !measurementId) return;
+  if (initialized || !measurementId || getAnalyticsConsent() !== "granted") return;
   initialized = true;
 
   const script = document.createElement("script");
@@ -31,7 +45,7 @@ export const initGoogleAnalytics = () => {
     window.dataLayer!.push(args);
   };
   window.gtag("js", new Date());
-  window.gtag("config", measurementId);
+  window.gtag("config", measurementId, { anonymize_ip: true });
 };
 
 export const trackPageView = (path: string) => {

@@ -1,0 +1,13 @@
+Contact: mailto:amiizumi00@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/.well-known/security.txt
+Policy: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/#faq
+Acknowledgments: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/#testimonials
+
+# Responsible Disclosure
+# If you believe you have found a security vulnerability on this site,
+# please report it via the contact address above. Please provide a detailed
+# description, steps to reproduce, and allow reasonable time for a response
+# before any public disclosure. Good-faith security research is welcomed
+# and will not be met with legal action.
