@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, Youtube, Mail, Heart, Code, Send, CheckCircle2 } from 'lucide-react';
 
 const NewsletterForm = () => {
@@ -101,6 +102,27 @@ const Footer = () => {
             </p>
           </div>
         </RevealOnScroll>
+
+        {/* Resources */}
+        <div className="mt-8 pt-6 border-t border-border/50 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          {[
+            { label: 'blog archive', to: '/blog' },
+            { label: 'disclosure policy', to: '/disclosure' },
+            { label: 'security.txt', href: '/.well-known/security.txt' },
+            { label: 'pgp key', href: '/pgp-key.txt' },
+            { label: 'rss feed', href: '/rss.xml' },
+          ].map((item) =>
+            'to' in item ? (
+              <Link key={item.label} to={item.to} className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors">
+                {item.label}
+              </Link>
+            ) : (
+              <a key={item.label} href={item.href} className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors">
+                {item.label}
+              </a>
+            )
+          )}
+        </div>
 
         {/* Newsletter */}
         <div className="mt-8 pt-6 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
