@@ -1,64 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import RevealOnScroll, { RevealItem } from './RevealOnScroll';
-import { FileText, Calendar, Tag, AlertTriangle, Shield, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { FileText, Calendar, Tag, AlertTriangle, Shield, ArrowRight, Rss } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { posts, type BlogPost as BlogPostData } from '@/data/posts';
+import { posts } from '@/data/posts';
 
 const blogPosts = posts;
 
-const blogPosts: BlogPost[] = [
-  {
-    title: "Information Disclosure in Remitly Payment Platform",
-    excerpt: "Discovered a critical information disclosure vulnerability in Remitly (Bug #3116964) that could lead to potential account takeover through exposed sensitive user data.",
-    date: "2024-08-15",
-    tags: ["Information Disclosure", "Payment Security", "HackerOne"],
-    type: "cve",
-    cveId: "Bug #3116964",
-    severity: "high",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  },
-  {
-    title: "SSRF to RCE: Chaining Vulnerabilities for Maximum Impact",
-    excerpt: "Deep dive into my methodology for discovering and chaining SSRF vulnerabilities to achieve Remote Code Execution, with real-world case studies from penetration testing engagements.",
-    date: "2024-06-20",
-    tags: ["SSRF", "RCE", "Exploitation"],
-    type: "writeup",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  },
-  {
-    title: "Payment Gateway OTP Bypass Techniques",
-    excerpt: "Analysis of OTP/PIN verification flaws in fintech platforms including race conditions, TOCTOU attacks, and transaction manipulation vulnerabilities that saved clients $500K+ in potential fraud.",
-    date: "2024-05-10",
-    tags: ["Fintech", "OTP Bypass", "Business Logic"],
-    type: "research",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  },
-  {
-    title: "Hunting IDOR Chains in Financial APIs",
-    excerpt: "My approach to discovering and exploiting chained IDOR vulnerabilities in financial applications, including BOLA/IDOR detection patterns and permission matrix testing techniques.",
-    date: "2024-04-05",
-    tags: ["IDOR", "API Security", "BOLA"],
-    type: "writeup",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  },
-  {
-    title: "Building UltraAPI: 70% Faster API Security Testing",
-    excerpt: "How I built a comprehensive API security framework that automates endpoint enumeration, JWT/OAuth exploitation, and rate-limit bypass testing, now adopted by 5+ security teams.",
-    date: "2024-03-18",
-    tags: ["Automation", "API Testing", "Tools"],
-    type: "tutorial",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  },
-  {
-    title: "Rate-Limit Bypass: From Enumeration to Account Takeover",
-    excerpt: "Comprehensive guide on identifying and exploiting rate-limit vulnerabilities for user enumeration, credential stuffing, and authentication bypass in modern web applications.",
-    date: "2024-02-22",
-    tags: ["Rate-Limit", "Auth Bypass", "Bug Bounty"],
-    type: "research",
-    link: "https://www.linkedin.com/in/zeroizumi/recent-activity/all/"
-  }
-];
 
 const typeConfig = {
   cve: { icon: AlertTriangle, label: 'CVE', color: 'text-red-400 bg-red-400/10 border-red-400/30' },
