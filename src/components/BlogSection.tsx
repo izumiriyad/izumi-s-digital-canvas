@@ -107,17 +107,13 @@ const BlogSection = () => {
                       })}
                     </span>
                     
-                    {post.link && (
-                      <a
-                        href={post.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
-                      >
-                        Read More
-                        <ExternalLink size={12} />
-                      </a>
-                    )}
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                    >
+                      Read writeup
+                      <ArrowRight size={12} />
+                    </Link>
                   </div>
                 </div>
               </RevealItem>
@@ -133,9 +129,11 @@ const BlogSection = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <Button variant="neon-outline" size="lg">
-            <FileText className="mr-2" size={18} />
-            View All Writeups
+          <Button variant="neon-outline" size="lg" asChild>
+            <Link to="/blog">
+              <Rss className="mr-2" size={18} />
+              View All Writeups
+            </Link>
           </Button>
         </motion.div>
       </div>
