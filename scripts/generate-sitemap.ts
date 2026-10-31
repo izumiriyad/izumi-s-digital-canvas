@@ -20,6 +20,15 @@ const projectSlugs = [
   'bug-bounty-pro-toolkit',
 ];
 
+const blogSlugs = [
+  'remitly-information-disclosure',
+  'ssrf-to-rce-chaining',
+  'payment-gateway-otp-bypass',
+  'idor-chains-financial-apis',
+  'building-ultraapi',
+  'rate-limit-bypass-account-takeover',
+];
+
 const serviceSlugs = [
   'web-application-penetration-testing',
   'api-security-review',
@@ -41,9 +50,16 @@ const entries: SitemapEntry[] = [
   { path: '/cve', changefreq: 'weekly', priority: '0.8' },
   { path: '/whoami', changefreq: 'monthly', priority: '0.5' },
   { path: '/compare', changefreq: 'monthly', priority: '0.6' },
+  { path: '/blog', changefreq: 'weekly', priority: '0.8' },
+  { path: '/disclosure', changefreq: 'yearly', priority: '0.4' },
+  ...blogSlugs.map((slug) => ({
+    path: `/blog/${slug}`,
+    changefreq: 'monthly' as const,
+    priority: '0.6',
+  })),
   ...projectSlugs.map((slug) => ({
     path: `/projects/${slug}`,
-    changefreq: 'monthly' as const,
+    changefreq: 'monthly',
     priority: '0.7',
   })),
 ];

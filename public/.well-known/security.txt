@@ -1,11 +1,14 @@
 Contact: mailto:amiizumi00@gmail.com
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: en
-Canonical: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/.well-known/security.txt
-Policy: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/#faq
-Acknowledgments: https://id-preview--c7b34147-580d-4ba2-bff3-fed9025cf535.lovable.app/#testimonials
+Canonical: https://izumi-creations-hub.lovable.app/.well-known/security.txt
+Policy: https://izumi-creations-hub.lovable.app/disclosure
+Encryption: https://izumi-creations-hub.lovable.app/pgp-key.txt
+Acknowledgments: https://izumi-creations-hub.lovable.app/#testimonials
 
 # Responsible Disclosure
+# Full policy (scope, safe harbor, response timeline) lives at the Policy URL,
+# clearsigned with the PGP key at the Encryption URL.
 # If you believe you have found a security vulnerability on this site,
 # please report it via the contact address above. Please provide a detailed
 # description, steps to reproduce, and allow reasonable time for a response
