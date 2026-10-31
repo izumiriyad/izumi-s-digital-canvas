@@ -54,6 +54,7 @@ const Disclosure = () => {
           >
             <div className="bg-card/50 border border-border rounded-lg p-6">
               <div className="inline-flex items-center gap-2 font-mono text-xs text-primary mb-3">
+                <Mail size={12} /> CONTACT
               </div>
               <a href="mailto:amiizumi00@gmail.com" className="text-lg font-mono text-foreground hover:text-primary transition-colors">
                 amiizumi00@gmail.com
