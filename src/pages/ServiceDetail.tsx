@@ -40,6 +40,7 @@ const ServiceDetail = () => {
         title={`${service.name} — from $${service.priceFrom}`}
         description={service.summary}
         canonical={`/services/${service.slug}`}
+        image="/social/og-services.png"
         type="website"
         jsonLd={[
           {
