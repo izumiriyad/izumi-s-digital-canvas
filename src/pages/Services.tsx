@@ -16,6 +16,7 @@ const Services = () => (
       title="Security Services — Pentest, API, Cloud, Mobile, Web3"
       description="Offensive security services: web and API penetration testing, OSINT attack surface audits, cloud reviews, mobile testing and smart contract audits."
       canonical="/services"
+      image="/social/og-services.png"
       jsonLd={{
         '@context': 'https://schema.org',
         '@type': 'ItemList',

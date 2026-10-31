@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import SEO from '@/components/SEO';
+import NewsletterForm from '@/components/NewsletterForm';
 import { posts, getPost, relatedPosts, postHeadings, type PostType } from '@/data/posts';
 import { SITE_URL } from '@/lib/site';
-import { Calendar, Tag, AlertTriangle, Shield, FileText, ArrowLeft, ArrowRight, Clock, List, Share2, Link2, Check } from 'lucide-react';
+import { Calendar, Tag, AlertTriangle, Shield, FileText, ArrowLeft, ArrowRight, Clock, List, Share2, Link2, Check, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const typeConfig: Record<PostType, { icon: typeof FileText; label: string; color: string }> = {
@@ -27,11 +28,39 @@ const severityColors: Record<string, string> = {
 const headingId = (text: string) =>
   text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
+/** Highlight the TOC entry for whichever section is currently in view. */
+const useActiveHeading = (ids: string[]) => {
+  const [activeId, setActiveId] = useState<string>(ids[0] ?? '');
+  useEffect(() => {
+    if (!ids.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) setActiveId(visible.target.id);
+      },
+      { rootMargin: '-96px 0px -60% 0px', threshold: 0 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [ids.join('|')]);
+  return activeId;
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
   const post = getPost(slug ?? '');
+
+  const ordered = useMemo(() => [...posts].sort((a, b) => b.date.localeCompare(a.date)), []);
+  const currentIndex = post ? ordered.findIndex((p) => p.slug === post.slug) : -1;
+  const newer = currentIndex > 0 ? ordered[currentIndex - 1] : null;
+  const older = currentIndex >= 0 && currentIndex < ordered.length - 1 ? ordered[currentIndex + 1] : null;
 
   if (!post) {
     return (
@@ -48,6 +77,7 @@ const BlogPost = () => {
   const cfg = typeConfig[post.type];
   const TypeIcon = cfg.icon;
   const headings = postHeadings(post.content);
+  const activeId = useActiveHeading(headings.map((h) => h.id));
   const related = relatedPosts(post);
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const shareText = encodeURIComponent(`${post.title} — by Aftab Ahomod Riyad`);
@@ -63,17 +93,28 @@ const BlogPost = () => {
     }
   };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: { '@type': 'Person', name: 'Aftab Ahomod Riyad', alternateName: 'izumi' },
-    url: canonical,
-    image: ogImage,
-    keywords: post.tags.join(', '),
-  };
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.date,
+      author: { '@type': 'Person', name: 'Aftab Ahomod Riyad', alternateName: 'izumi' },
+      url: canonical,
+      image: ogImage,
+      keywords: post.tags.join(', '),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+        { '@type': 'ListItem', position: 3, name: post.title, item: canonical },
+      ],
+    },
+  ];
 
   const markdownComponents = {
     h2: ({ children }: { children?: React.ReactNode }) => {
@@ -212,6 +253,20 @@ const BlogPost = () => {
                   </Button>
                 </div>
 
+                {/* Newsletter */}
+                <div className="bg-card/50 border border-border rounded-lg p-6 md:p-8 mb-10 flex flex-col md:flex-row items-center gap-6">
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="inline-flex items-center gap-2 font-mono text-xs text-primary mb-2">
+                      <Mail size={12} /> INTEL DROP
+                    </div>
+                    <h3 className="text-lg font-bold mb-1">Get the next writeup first</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Monthly security research, CVE analysis and tooling — no noise, unsubscribe anytime.
+                    </p>
+                  </div>
+                  <NewsletterForm source="blog-post" className="w-full md:w-auto" />
+                </div>
+
                 <div className="relative bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 rounded-lg p-8 text-center">
                   <h3 className="text-xl font-bold mb-2">Want this level of depth on your attack surface?</h3>
                   <p className="text-muted-foreground text-sm mb-6 max-w-xl mx-auto">
@@ -239,7 +294,11 @@ const BlogPost = () => {
                         <a
                           key={h.id}
                           href={`#${h.id}`}
-                          className="block text-sm text-muted-foreground hover:text-primary transition-colors leading-snug"
+                          className={`block text-sm transition-colors leading-snug border-l-2 pl-3 -ml-3 py-0.5 ${
+                            activeId === h.id
+                              ? 'text-primary border-primary'
+                              : 'text-muted-foreground border-transparent hover:text-primary'
+                          }`}
                         >
                           {h.text}
                         </a>
@@ -261,8 +320,36 @@ const BlogPost = () => {
             </aside>
           </div>
 
+          {/* Prev / Next */}
+          <div className="mt-16 grid sm:grid-cols-2 gap-4">
+            {older ? (
+              <Link
+                to={`/blog/${older.slug}`}
+                className="group bg-card/50 border border-border rounded-lg p-5 hover:border-primary/50 transition-all duration-300"
+              >
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground mb-2">
+                  <ArrowLeft size={12} /> older post
+                </span>
+                <div className="font-bold text-sm group-hover:text-primary transition-colors line-clamp-1">{older.title}</div>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {newer && (
+              <Link
+                to={`/blog/${newer.slug}`}
+                className="group bg-card/50 border border-border rounded-lg p-5 hover:border-primary/50 transition-all duration-300 text-right"
+              >
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground mb-2 justify-end">
+                  newer post <ArrowRight size={12} />
+                </span>
+                <div className="font-bold text-sm group-hover:text-primary transition-colors line-clamp-1">{newer.title}</div>
+              </Link>
+            )}
+          </div>
+
           {/* Related cards */}
-          <div className="mt-20">
+          <div className="mt-14">
             <h2 className="text-2xl font-bold mb-8">
               Keep <span className="text-gradient">reading</span>
             </h2>

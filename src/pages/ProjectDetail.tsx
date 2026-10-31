@@ -42,6 +42,7 @@ const ProjectDetail = () => {
         title={`${project.title} — Case Study`}
         description={project.description.length > 155 ? project.description.slice(0, 152) + '…' : project.description}
         canonical={`/projects/${project.slug}`}
+        image={project.image}
         type="article"
         jsonLd={{
           '@context': 'https://schema.org',
