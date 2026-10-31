@@ -53,7 +53,7 @@ const Disclosure = () => {
             className="grid md:grid-cols-2 gap-4 mb-14"
           >
             <div className="bg-card/50 border border-border rounded-lg p-6">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-primary mb-3">
+              <div className="flex items-center gap-2 font-mono text-xs text-primary mb-3">
                 <Mail size={12} /> CONTACT
               </div>
               <a href="mailto:amiizumi00@gmail.com" className="text-lg font-mono text-foreground hover:text-primary transition-colors">
