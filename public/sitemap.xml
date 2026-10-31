@@ -61,6 +61,46 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>/disclosure</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>/blog/remitly-information-disclosure</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/blog/ssrf-to-rce-chaining</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/blog/payment-gateway-otp-bypass</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/blog/idor-chains-financial-apis</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/blog/building-ultraapi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>/blog/rate-limit-bypass-account-takeover</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>/projects/ultraapi-framework</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
