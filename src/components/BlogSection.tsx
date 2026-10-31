@@ -75,7 +75,9 @@ const BlogSection = () => {
 
                   {/* Title */}
                   <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
+                    <Link to={`/blog/${post.slug}`} className="hover:underline decoration-primary/50">
+                      {post.title}
+                    </Link>
                   </h3>
 
                   {/* Excerpt */}

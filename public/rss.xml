@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Aftab Riyad — Security Research</title>
-    <link>https://riyad.sec</link>
+    <link>https://izumi-creations-hub.lovable.app</link>
     <description>CVE disclosures, writeups, and offensive security research from Aftab Ahomod Riyad.</description>
     <language>en-us</language>
+    <atom:link href="https://izumi-creations-hub.lovable.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Latest CVE disclosures</title>
-      <link>https://riyad.sec/cve</link>
-      <description>Live list of disclosed vulnerabilities and PoCs.</description>
+      <title>Information Disclosure in Remitly Payment Platform</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/remitly-information-disclosure</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/remitly-information-disclosure</guid>
+      <pubDate>Thu, 15 Aug 2024 00:00:00 GMT</pubDate>
+      <description>Discovered a critical information disclosure vulnerability in Remitly (Bug #3116964) that could lead to potential account takeover through exposed sensitive user data.</description>
     </item>
     <item>
-      <title>Pentesting methodology</title>
-      <link>https://riyad.sec/#process</link>
-      <description>How I scope, execute, and report security engagements.</description>
+      <title>SSRF to RCE: Chaining Vulnerabilities for Maximum Impact</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/ssrf-to-rce-chaining</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/ssrf-to-rce-chaining</guid>
+      <pubDate>Thu, 20 Jun 2024 00:00:00 GMT</pubDate>
+      <description>Deep dive into my methodology for discovering and chaining SSRF vulnerabilities to achieve Remote Code Execution, with real-world case studies from penetration testing engagements.</description>
+    </item>
+    <item>
+      <title>Payment Gateway OTP Bypass Techniques</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/payment-gateway-otp-bypass</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/payment-gateway-otp-bypass</guid>
+      <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
+      <description>Analysis of OTP/PIN verification flaws in fintech platforms including race conditions, TOCTOU attacks, and transaction manipulation vulnerabilities that saved clients $500K+ in potential fraud.</description>
+    </item>
+    <item>
+      <title>Hunting IDOR Chains in Financial APIs</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/idor-chains-financial-apis</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/idor-chains-financial-apis</guid>
+      <pubDate>Fri, 05 Apr 2024 00:00:00 GMT</pubDate>
+      <description>My approach to discovering and exploiting chained IDOR vulnerabilities in financial applications, including BOLA/IDOR detection patterns and permission matrix testing techniques.</description>
+    </item>
+    <item>
+      <title>Building UltraAPI: 70% Faster API Security Testing</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/building-ultraapi</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/building-ultraapi</guid>
+      <pubDate>Mon, 18 Mar 2024 00:00:00 GMT</pubDate>
+      <description>How I built a comprehensive API security framework that automates endpoint enumeration, JWT/OAuth exploitation, and rate-limit bypass testing, now adopted by 5+ security teams.</description>
+    </item>
+    <item>
+      <title>Rate-Limit Bypass: From Enumeration to Account Takeover</title>
+      <link>https://izumi-creations-hub.lovable.app/blog/rate-limit-bypass-account-takeover</link>
+      <guid isPermaLink="true">https://izumi-creations-hub.lovable.app/blog/rate-limit-bypass-account-takeover</guid>
+      <pubDate>Thu, 22 Feb 2024 00:00:00 GMT</pubDate>
+      <description>Comprehensive guide on identifying and exploiting rate-limit vulnerabilities for user enumeration, credential stuffing, and authentication bypass in modern web applications.</description>
     </item>
   </channel>
 </rss>
