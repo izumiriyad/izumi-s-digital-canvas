@@ -22,7 +22,7 @@ const Blog = () => {
         title="Blog & Writeups — Security Research Archive"
         description="Full archive of security research: CVE disclosures, SSRF/RCE writeups, fintech logic flaws, IDOR chains and offensive automation."
         canonical="/blog"
-        image="/social/og-writeup.png"
+        image="/social/og-writeup.jpg"
       />
       <div className="min-h-screen pt-28 pb-24 relative">
         <div className="container mx-auto px-6 max-w-6xl">

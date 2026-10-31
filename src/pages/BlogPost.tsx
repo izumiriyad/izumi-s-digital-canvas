@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import SEO from '@/components/SEO';
+import ScrollProgress from '@/components/ScrollProgress';
 import NewsletterForm from '@/components/NewsletterForm';
 import { posts, getPost, relatedPosts, postHeadings, type PostType } from '@/data/posts';
 import { SITE_URL } from '@/lib/site';
@@ -81,7 +82,7 @@ const BlogPost = () => {
   const related = relatedPosts(post);
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const shareText = encodeURIComponent(`${post.title} — by Aftab Ahomod Riyad`);
-  const ogImage = `${SITE_URL}/social/og-writeup.png`;
+  const ogImage = `${SITE_URL}/social/og-writeup.jpg`;
 
   const copyLink = async () => {
     try {
@@ -166,11 +167,12 @@ const BlogPost = () => {
         title={`${post.title} — Security Writeup`}
         description={post.excerpt}
         canonical={`/blog/${post.slug}`}
-        image={`/social/og-writeup.png`}
+        image={`/social/og-writeup.jpg`}
         type="article"
         jsonLd={jsonLd}
       />
       <div className="min-h-screen pt-28 pb-24 relative">
+        <ScrollProgress />
         <div className="container mx-auto px-6 max-w-6xl">
           <Link to="/blog" className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:text-primary/80 mb-10">
             <ArrowLeft size={14} /> cd ../blog

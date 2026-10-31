@@ -16,8 +16,19 @@ import SecurityPostureChart from '@/components/SecurityPostureChart';
 import SEO from '@/components/SEO';
 import { Images } from 'lucide-react';
 import { getProjectBySlug, projects } from '@/data/projects';
+import { services } from '@/data/services';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+
+/** Which service pages each case study funnels into. */
+const projectServiceMap: Record<string, string[]> = {
+  'ultraapi-framework': ['api-security-review', 'web-application-penetration-testing'],
+  'phantom-recon-system': ['web-application-penetration-testing'],
+  'payment-gateway-security-suite': ['api-security-review', 'web-application-penetration-testing'],
+  'uae-crypto-osint-dashboard': ['osint-and-attack-surface-audit'],
+  'linkedin-automation-bot': ['osint-and-attack-surface-audit'],
+  'bug-bounty-pro-toolkit': ['web-application-penetration-testing'],
+};
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -288,6 +299,33 @@ const ProjectDetail = () => {
             ))}
           </ul>
         </section>
+
+        {/* Related services */}
+        {(projectServiceMap[project.slug] ?? []).length > 0 && (
+          <section className="container mx-auto px-6 max-w-6xl py-8">
+            <h2 className="text-xl md:text-2xl font-bold mb-6">
+              Turn this research into <span className="text-gradient">your engagement</span>
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {(projectServiceMap[project.slug] ?? [])
+                .map((s) => services.find((svc) => svc.slug === s))
+                .filter(Boolean)
+                .map((svc) => (
+                  <Link
+                    key={svc!.slug}
+                    to={`/services/${svc!.slug}`}
+                    className="group bg-card/50 border border-border rounded-lg p-5 hover:border-primary/50 transition-all duration-300 flex items-center justify-between gap-4"
+                  >
+                    <div>
+                      <div className="font-bold text-sm group-hover:text-primary transition-colors">{svc!.name}</div>
+                      <div className="text-xs text-muted-foreground mt-1 line-clamp-1">{svc!.summary}</div>
+                    </div>
+                    <ArrowRight size={16} className="text-primary shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                ))}
+            </div>
+          </section>
+        )}
 
         {/* CTA + other projects */}
         <section className="container mx-auto px-6 max-w-6xl py-16">
