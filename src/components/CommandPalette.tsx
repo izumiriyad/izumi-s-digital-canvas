@@ -18,6 +18,8 @@ import {
   Wrench,
   Terminal,
   Scale,
+  Rss,
+  FileSignature,
 } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
 import { useToast } from '@/hooks/use-toast';
@@ -109,6 +111,12 @@ const CommandPalette = () => {
                   </Item>
                   <Item icon={Scale} onSelect={() => visit('/compare')}>
                     Compare vs agencies
+                  </Item>
+                  <Item icon={Rss} onSelect={() => visit('/blog')}>
+                    Blog & writeup archive
+                  </Item>
+                  <Item icon={FileSignature} onSelect={() => visit('/disclosure')}>
+                    Disclosure policy
                   </Item>
                 </Command.Group>
 

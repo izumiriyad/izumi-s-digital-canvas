@@ -17,6 +17,9 @@ import CookieConsent from "./components/CookieConsent";
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const CVEs = lazy(() => import("./pages/CVEs"));
 const WhoAmI = lazy(() => import("./pages/WhoAmI"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Disclosure = lazy(() => import("./pages/Disclosure"));
 const Compare = lazy(() => import("./pages/Compare"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
@@ -66,6 +69,9 @@ const App = () => (
                 <Route path="/report" element={<SampleReport />} />
                 <Route path="/cve" element={<CVEs />} />
                 <Route path="/whoami" element={<WhoAmI />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/disclosure" element={<Disclosure />} />
                 <Route path="/compare" element={<Compare />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
