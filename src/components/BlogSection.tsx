@@ -1,18 +1,11 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import RevealOnScroll, { RevealItem } from './RevealOnScroll';
-import { FileText, ExternalLink, Calendar, Tag, AlertTriangle, Shield } from 'lucide-react';
+import { FileText, Calendar, Tag, AlertTriangle, Shield, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { posts, type BlogPost as BlogPostData } from '@/data/posts';
 
-interface BlogPost {
-  title: string;
-  excerpt: string;
-  date: string;
-  tags: string[];
-  type: 'writeup' | 'cve' | 'research' | 'tutorial';
-  link?: string;
-  cveId?: string;
-  severity?: 'critical' | 'high' | 'medium' | 'low';
-}
+const blogPosts = posts;
 
 const blogPosts: BlogPost[] = [
   {

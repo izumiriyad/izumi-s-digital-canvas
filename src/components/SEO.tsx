@@ -1,18 +1,21 @@
 import { Helmet } from 'react-helmet-async';
+import { absoluteUrl } from '@/lib/site';
 
 interface SEOProps {
   title: string;
   description: string;
   canonical?: string;
+  /** Absolute URL, or a path starting with "/" which is resolved against the site origin. */
   image?: string;
   type?: 'website' | 'article' | 'profile';
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SEO = ({ title, description, canonical, image, type = 'website', noindex, jsonLd }: SEOProps) => {
+const SEO = ({ title, description, canonical, image: rawImage, type = 'website', noindex, jsonLd }: SEOProps) => {
   const truncatedDesc = description.length > 160 ? description.slice(0, 157) + '…' : description;
   const truncatedTitle = title.length > 60 ? title.slice(0, 57) + '…' : title;
+  const image = rawImage && rawImage.startsWith('/') ? absoluteUrl(rawImage) : rawImage;
 
   return (
     <Helmet>
