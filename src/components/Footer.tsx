@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Youtube, Mail, Heart, Code, Send, CheckCircle2 } from 'lucide-react';
-
-const NewsletterForm = () => {
+import NewsletterForm from './NewsletterForm';
+import { Github, Linkedin, Youtube, Mail, Heart, Code } from 'lucide-react';
   const [email, setEmail] = useState('');
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
