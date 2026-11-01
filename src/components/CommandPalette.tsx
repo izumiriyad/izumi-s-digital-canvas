@@ -120,6 +120,14 @@ const CommandPalette = () => {
                   </Item>
                 </Command.Group>
 
+                <Command.Group heading="Writeups" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
+                  {posts.map((p) => (
+                    <Item key={p.slug} icon={p.type === 'cve' ? ShieldAlert : FileText} onSelect={() => visit(`/blog/${p.slug}`)}>
+                      {p.title}
+                    </Item>
+                  ))}
+                </Command.Group>
+
                 <Command.Group heading="Actions" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
                   <Item icon={Copy} onSelect={copyEmail}>Copy email address</Item>
                   <Item
