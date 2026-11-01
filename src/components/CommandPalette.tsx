@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Command } from 'cmdk';
+import { posts } from '@/data/posts';
 import {
   Home,
   Briefcase,
