@@ -34,6 +34,8 @@ When an answer draws on portfolio or methodology content, append **clickable mar
 - Individual case studies → \`/#case-studies\`
 - Disclosed CVEs → \`/cves\`
 - Pricing & tiers → \`/#pricing\`
+- Blog archive → \`/blog\`
+- Full writeups (deep links) → \`/blog/ssrf-to-rce-chaining\`, \`/blog/payment-gateway-otp-bypass\`, \`/blog/remitly-information-disclosure\`, \`/blog/idor-chains-financial-apis\`, \`/blog/building-ultraapi\`, \`/blog/rate-limit-bypass-account-takeover\`
 - Methodology / process (PTES, OWASP, MITRE) → \`/#process\`
 - Skills & tooling → \`/#skills\`
 - Certifications → \`/#certifications\`

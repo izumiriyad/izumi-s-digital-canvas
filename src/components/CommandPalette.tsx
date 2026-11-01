@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Command } from 'cmdk';
+import { posts } from '@/data/posts';
 import {
   Home,
   Briefcase,
@@ -118,6 +119,14 @@ const CommandPalette = () => {
                   <Item icon={FileSignature} onSelect={() => visit('/disclosure')}>
                     Disclosure policy
                   </Item>
+                </Command.Group>
+
+                <Command.Group heading="Writeups" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
+                  {posts.map((p) => (
+                    <Item key={p.slug} icon={p.type === 'cve' ? ShieldAlert : FileText} onSelect={() => visit(`/blog/${p.slug}`)}>
+                      {p.title}
+                    </Item>
+                  ))}
                 </Command.Group>
 
                 <Command.Group heading="Actions" className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2 py-2">
